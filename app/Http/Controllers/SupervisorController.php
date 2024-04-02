@@ -53,6 +53,9 @@ class SupervisorController extends Controller
             'Active_days' => 'required',
         ]);
         $supervisor = Supervisor::find($id);
+        if ($supervisor->user_id != $request->user()->id) {
+            return response()->json("Un Authorized!");
+        }
         $supervisor->firstname = $request->firstname;
         $supervisor->lastname = $request->lastname;
         $supervisor->specialization = $request->specialization;

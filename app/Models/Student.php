@@ -16,7 +16,7 @@ class Student extends Model
         'user_id',
         'year',
         'specialization',
-        ' project_semester',
+        'project_semester',
         'completed_hours',
         'current_semester_hours',
         'cumulative_gpa'

@@ -21,7 +21,6 @@ class StudentController extends Controller
     }
     public function create(Request $request)
     {
-
         $request->validate([
             'firstname' => 'required',
             'lastname' => 'required',
@@ -62,6 +61,9 @@ class StudentController extends Controller
             'cumulative_gpa' => 'required',
         ]);
         $student = Student::find($id);
+        if ($student->user_id != $request->user()->id) {
+            return response()->json("Un Authorized!");
+        }
         $student->firstname = $request->firstname;
         $student->lastname = $request->lastname;
         $student->year = $request->year;

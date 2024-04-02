@@ -11,9 +11,9 @@ return new class extends Migration
         Schema::table('students', function (Blueprint $table) {
 
             $table->string('project_semester');
-            $table->integer('completed_hours')->default(0);
-            $table->integer('current_semester_hours')->default(0);
-            $table->double('cumulative_gpa', 4, 0)->default(0.00);
+            $table->integer('completed_hours');
+            $table->integer('current_semester_hours');
+            $table->double('cumulative_gpa', 4, 0);
         });
     }
 
@@ -22,8 +22,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('students', function (Blueprint $table) {
-            //
-        });
+
+        Schema::dropIfExists('students');
     }
 };

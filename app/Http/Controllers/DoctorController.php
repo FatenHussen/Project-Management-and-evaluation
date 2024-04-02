@@ -47,6 +47,9 @@ class DoctorController extends Controller
 
         ]);
         $doctor = Doctor::find($id);
+        if ($doctor->user_id != $request->user()->id) {
+            return response()->json("Un Authorized!");
+        }
         $doctor->firstname = $request->firstname;
         $doctor->lastname = $request->lastname;
         $doctor->save();

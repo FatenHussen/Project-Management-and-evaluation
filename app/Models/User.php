@@ -21,7 +21,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'firstname',
+        'lastname',
         'email',
         'password',
         'role'
@@ -48,13 +49,13 @@ class User extends Authenticatable
     ];
     public function student()
     {
-        return $this->BelongsTo(Student::class, 'id','user_id');
+        return $this->BelongsTo(Student::class, 'id', 'user_id');
     }
-    public function supervisors(): BelongsTo
+    public function supervisors()
     {
         return $this->BelongsTo(Supervisor::class, 'supervisors_id');
     }
-    public function doctors(): BelongsTo
+    public function doctors()
     {
         return $this->BelongsTo(Doctor::class, 'doctors_id');
     }

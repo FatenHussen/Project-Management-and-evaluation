@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class supervisor_Committe extends Model
 {
     use HasFactory;
+    protected $table = "supervisor_committes";
+    protected $fillable =
+    [
+        'committe_id',
+        'supervisors_id',
+    ];
 }

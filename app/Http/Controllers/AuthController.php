@@ -46,8 +46,7 @@ class AuthController extends Controller
             'firstname' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string',
-            'role' =>  'required|string',
+            'password' => 'required|string'
 
         ]);
 
@@ -55,17 +54,17 @@ class AuthController extends Controller
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
             'email' => $request->email,
-            'role' => $request->role,
+            'role' => 'Student',
             'password' => Hash::make($request->password),
         ]);
 
-        if ($user->role == 'Doctor') {
-            Doctor::create([
-                'firstname' => $user->firstname,
-                'lastname' => $user->lastname,
-                'user_id' => $user->id,
-            ]);
-        } else  if ($user->role == 'Student') {
+        // if ($user->role == 'Doctor') {
+        //     Doctor::create([
+        //         'firstname' => $user->firstname,
+        //         'lastname' => $user->lastname,
+        //         'user_id' => $user->id,
+        //     ]);
+        // } else  if ($user->role == 'Student') {
             Student::create([
                 'firstname' => $user->firstname,
                 'lastname' => $user->lastname,
@@ -77,16 +76,16 @@ class AuthController extends Controller
                 'current_semester_hours' => 0,
                 'cumulative_gpa' => 0,
             ]);
-        } else  if ($user->role == 'Supervisor') {
-            Supervisor::create([
-                'firstname' => $user->firstname,
-                'lastname' => $user->lastname,
-                'user_id' => $user->id,
-                'specialization' => ' ',
-                'projects_per_semesters' => 0,
-                'Active_days' => 0
-            ]);
-        }
+        // } else  if ($user->role == 'Supervisor') {
+        //     Supervisor::create([
+        //         'firstname' => $user->firstname,
+        //         'lastname' => $user->lastname,
+        //         'user_id' => $user->id,
+        //         'specialization' => ' ',
+        //         'projects_per_semesters' => 0,
+        //         'Active_days' => 0
+        //     ]);
+        // }
 
         $credentials = $request->only('email', 'password');
         $token = Auth::attempt($credentials);

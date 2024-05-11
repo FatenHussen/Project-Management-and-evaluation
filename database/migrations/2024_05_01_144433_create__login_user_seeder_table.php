@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('supervisors', function (Blueprint $table) {
-            $table->string('projects_per_semesters')->nullable();
-            $table->integer('Active_days')->nullable();
+        Schema::create('_login_user_seeder', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
         });
     }
 
@@ -22,8 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('supervisors', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('_login_user_seeder');
     }
 };

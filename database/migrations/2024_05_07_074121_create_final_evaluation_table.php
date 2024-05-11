@@ -13,22 +13,22 @@ return new class extends Migration
     {
         Schema::create('final_evaluation', function (Blueprint $table) {
             $table->id();
-            $table->string('member_1_name');
-            $table->integer('member_1_degree');
-            $table->text('member_1_description');
-            $table->string('member_2_name');
-            $table->integer('member_2_degree');
-            $table->text('member_2_description');
-            $table->string('member_3_name');
-            $table->integer('member_3_degree');
-            $table->text('member_3_description');
-            $table->string('member_4_name');
-            $table->integer('member_4_degree');
-            $table->text('member_4_description');
-            $table->string('title');
-            $table->string('members');
-            $table->string('notes')->nullable();
-            $table->integer('rating');
+            $table->string('project_member_1_name');
+            $table->integer('project_member_1_degree');
+            $table->text('project_member_1_description');
+            $table->string('project_member_2_name');
+            $table->integer('project_member_2_degree');
+            $table->text('project_member_2_description');
+            $table->string('project_member_3_name');
+            $table->integer('project_member_3_degree');
+            $table->text('project_member_3_description');
+            $table->string('project_member_4_name');
+            $table->integer('project_member_4_degree');
+            $table->text('project_member_4_description');
+            $table->string('project_title');
+            $table->string('project_members');
+            $table->string('project_notes')->nullable();
+            $table->integer('idea_rating');
             $table->integer('signal_study_rating');
             $table->integer('analytical_study_rating');
             $table->integer('design_rating');
@@ -50,6 +50,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('evaluations');
+        Schema::dropIfExists('final_evaluation');
     }
 };
+
+

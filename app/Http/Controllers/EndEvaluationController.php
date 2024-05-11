@@ -23,14 +23,22 @@ class EndEvaluationController extends Controller
 
         $request->validate([
             'project_id' => 'required',
-            'name' => 'required',
         ]);
 
 
-        $end_Evoluation = end_Evoluation::create([
-            'name' => $request->name,
-        ]);
-        return response()->json($end_Evoluation);
+        foreach ($request->names as $name) 
+        {
+            $end_Evoluation = end_Evoluation::create([
+                'name' => $request->name,
+                'project_id' => $request->project_id
+            ]);
+        }
+
+
+        // $end_Evoluation = end_Evoluation::create([
+        //     'name' => $request->name,
+        // ]);
+        // return response()->json($end_Evoluation);
     }
     public function update(Request $request, $id)
     {

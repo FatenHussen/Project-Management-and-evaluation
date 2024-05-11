@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('committes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('doctor_id')->constrained('doctors')->onDelete('cascade');
+            // $table->foreignId('doctor_id')->constrained('doctors')->onDelete('cascade');
             $table->string('description');
             $table->timestamps();
         });

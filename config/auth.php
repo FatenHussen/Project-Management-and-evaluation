@@ -40,6 +40,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'student' => [
+            'driver' => 'session',
+            'provider' => 'students',
+        ],
+        'student_api' => [
+            'driver' => 'sanctum',
+            'provider' => 'students', // in api's middleware use this student_api
+        ]
     ],
 
     /*
@@ -59,10 +67,16 @@ return [
     |
     */
 
+ 
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+
+        'students' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Student::class,
         ],
 
         // 'users' => [

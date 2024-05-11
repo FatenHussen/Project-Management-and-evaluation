@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('supervisor_committes', function (Blueprint $table) {
-            $table->foreignId('supervisor_id')->constrained('supervisors')->onDelete('cascade');
-            $table->foreignId('committe_id')->constrained('committes')->onDelete('cascade');
+           // $table->foreignId('supervisor_id')->constrained('supervisors')->onDelete('cascade');
+            // $table->foreignId('committe_id')->constrained('committes')->onDelete('cascade');
             $table->id();
             $table->timestamps();
         });

@@ -3,9 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Models\Doctor;
-use App\Models\Student;
-use App\Models\Supervisor;
+
+use App\Models\Evaluation;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -21,12 +20,35 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'firstname',
-        'lastname',
+        'user_id',
+        'name',
         'email',
         'password',
-        'role'
+        'role',
+        'specialization',
+        'numOfProject',
+        'gender',
+        'activeDays'
     ];
+    public function evaluations()
+    {
+        return $this->hasMany(Evaluation::class);
+    }
+
+    public function finalEvaluations()
+    {
+        return $this->hasMany(final_Evaluation::class);
+    }
+
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class, 'project_users');
+    }
+
+    public function committees()
+    {
+        return $this->belongsToMany(Committe::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -46,17 +68,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'activeDays'=>'array',
+
     ];
-    public function student()
-    {
-        return $this->BelongsTo(Student::class, 'id', 'user_id');
-    }
-    public function supervisors()
-    {
-        return $this->BelongsTo(Supervisor::class, 'supervisors_id');
-    }
-    public function doctors()
-    {
-        return $this->BelongsTo(Doctor::class, 'doctors_id');
-    }
 }

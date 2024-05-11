@@ -16,8 +16,13 @@ class DoctorMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $user = $request->user();
-        if ($user->role == "Doctor")
+        if ($user && $user->role == "Doctor") {
             return $next($request);
-        return response()->json('Not Authorized');
+        }
+        
+        // Return an error response if the user is not a student or if there is no user
+        return response()->json([
+            'error' => 'Unauthorized access - only DOCTOR are allowed.'
+        ], 403); // Using 403 Forbidden status code as it's more appropriate here
     }
-}
+}    

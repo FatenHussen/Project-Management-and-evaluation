@@ -11,20 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('semester')->nullable();
             $table->string('email')->unique();
-            $table->string('specialization');
-            $table->integer('numOfProject');
-            $table->enum('gender', ['male', 'female']);
-            $table->enum('role', ['Doctor', 'Supervisor','Dean','Vice','Admin']);
-            $table->string('activeDays');  
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
+            $table->enum('gender', ['male', 'female']);
+            $table->integer('year');
+            $table->string('uniId');
+            $table->string('cgpa');
+            $table->integer('completedHours');
+            $table->integer('currentHours');
+            $table->string('specialization');
             $table->timestamps();
-           
+            $table->rememberToken();
+            $table->unsignedBigInteger('project_id')->nullable();
         });
     }
 
@@ -33,6 +36,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('students');
     }
 };
+
+       
+        
+    

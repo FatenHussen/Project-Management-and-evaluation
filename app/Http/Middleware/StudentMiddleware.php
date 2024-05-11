@@ -17,8 +17,7 @@ class StudentMiddleware
     {
         $user = $request->user();
         if ($user->role == "Student")
-            return $next($request);
-        return response()->json('Not Authorized');
         return $next($request);
+        return response()->json('Not Authorized');
     }
 }

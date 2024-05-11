@@ -18,7 +18,7 @@ class SupervisoreMiddleware
         $user = $request->user();
         if ($user->role == "Supervisor")
             return $next($request);
-        return response()->json('Not Authorized');
+       
         return $next($request);
     }
 }

@@ -9,6 +9,7 @@ import Profile from './Pages/Profile';
 import Dashboard from './Pages/Dashboard';
 import Weekly from './Pages/Weekly';
 import Middle from './Pages/Middle';
+import Final from './Pages/Final';
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
       <Route path="/proposal/:id" element={<Proposal/>} />
       <Route path="/weekly/:id" element={<Weekly/>} />
       <Route path="/evaluation/:id" element={<Middle/>} />
+      <Route path="/final/:id" element={<Final/>} />
+
 
     </Routes>
     </Router>

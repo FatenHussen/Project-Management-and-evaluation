@@ -27,7 +27,7 @@ const DetailsModel = ({onClose, visible, id}) => {
                 <Link to={`/proposal/${id}`} className='w-[65%] h-[20%] bg-[#27374d] rounded-lg text-white flex justify-center items-center hover:bg-[#27374dd8]'>المقترح</Link>
                 <Link to={`/weekly/${id}`} className='w-[65%] h-[20%] bg-[#27374d] rounded-lg text-white flex justify-center items-center hover:bg-[#27374dd8]'>متابعة المشروع</Link>
                 <Link to={`/evaluation/${id}`} className='w-[65%] h-[20%] bg-[#27374d] rounded-lg text-white flex justify-center items-center hover:bg-[#27374dd8]'>الدراسة المرحلية</Link>
-                <button className='w-[65%] h-[20%] bg-[#27374d] rounded-lg text-white hover:bg-[#27374dd8]'>الدراسة النهائية</button>
+                <Link to={`/final/${id}`} className='w-[65%] h-[20%] bg-[#27374d] rounded-lg text-white flex justify-center items-center hover:bg-[#27374dd8]'>الدراسة النهائية</Link>
             </div>
         </div>
     </div>

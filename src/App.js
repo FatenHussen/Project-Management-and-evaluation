@@ -8,6 +8,7 @@ import Proposal from './Pages/Proposal';
 import Profile from './Pages/Profile';
 import Dashboard from './Pages/Dashboard';
 import Weekly from './Pages/Weekly';
+import Middle from './Pages/Middle';
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
       <Route path='/projects' Component={Projects}></Route>
       <Route path="/proposal/:id" element={<Proposal/>} />
       <Route path="/weekly/:id" element={<Weekly/>} />
+      <Route path="/evaluation/:id" element={<Middle/>} />
+
     </Routes>
     </Router>
     </div>

@@ -15,7 +15,7 @@ const Login = () => {
     formData.append('email', email);
     formData.append('password', password);
     
-    const LoginURlAPI='http://127.0.0.1:8000/admin/login'
+    const LoginURlAPI='https://aspu.octopus-s-s.serv00.net/api/login'
    async function LoginAPIA(){
     let hasError = false;
 
@@ -52,12 +52,17 @@ const Login = () => {
             }
           }
           )
-          // console.log('ss',response.data.data.admin)
+          console.log('ss',response.data)
           // localStorage.setItem('token', response.data.data.token)
-          if(response.data.data.admin){
+          if(response.data && response.data.data.admin){
             console.log("asd",11)
           localStorage.setItem('token', response.data.data.token)
-            navigate("/signup");
+            navigate("/dashboard");
+          }
+          if(response.data && response.data.data.employee){
+            console.log("asd",222)
+          localStorage.setItem('token', response.data.data.token)
+            navigate("/profile");
           }
            setLoader(false)
         }catch(err){
@@ -67,87 +72,87 @@ const Login = () => {
       
       console.log('error', emailError, passwordError)
       
-      const LoginURlAPIE='http://127.0.0.1:8000/employee/login'
-      async function LoginAPIE(){
-        let hasError = false;
+  //     const LoginURlAPIE='http://127.0.0.1:8000/employee/login'
+  //     async function LoginAPIE(){
+  //       let hasError = false;
         
-    if (!email.trim()) {
-      setEmailError('Please enter your email.');
-      hasError = true;
-  } else if (!/\S+@\S+\.\S+/.test(email)) {
-    setEmailError('Please enter a valid email address.');
-    hasError = true;
-  } else {
-    setEmailError('');
-  }
+  //   if (!email.trim()) {
+  //     setEmailError('Please enter your email.');
+  //     hasError = true;
+  // } else if (!/\S+@\S+\.\S+/.test(email)) {
+  //   setEmailError('Please enter a valid email address.');
+  //   hasError = true;
+  // } else {
+  //   setEmailError('');
+  // }
 
-  if (!password.trim()) {
-      setPasswordError('Please enter your password.');
-      hasError = true;
-    } else if (password.length < 8) {
-    setPasswordError('Please enter at least 8 letters.');
-    hasError = true;
-  } else {
-    setPasswordError('');
-  }
+  // if (!password.trim()) {
+  //     setPasswordError('Please enter your password.');
+  //     hasError = true;
+  //   } else if (password.length < 8) {
+  //   setPasswordError('Please enter at least 8 letters.');
+  //   hasError = true;
+  // } else {
+  //   setPasswordError('');
+  // }
   
-  if (hasError) {
-    return; // Return early if there are validation errors
-  }
-  setLoader(true)
-  try{
-          const response=await axios.post(LoginURlAPIE, formData, {
-            headers:{
-              // "Authorization":`Bearer ${localStorage.getItem('token')}`,
-          "Accept": "application/json, text/plain, */*",
-          "Access-Control-Allow-Origin" : "*",
-          "Content-Type": false
-            }
-          }
-        )
-        console.log('ss',response.data)
-        // localStorage.setItem('token', response.data.authorisation.token)
+  // if (hasError) {
+  //   return; // Return early if there are validation errors
+  // }
+  // setLoader(true)
+  // try{
+  //         const response=await axios.post(LoginURlAPIE, formData, {
+  //           headers:{
+  //             // "Authorization":`Bearer ${localStorage.getItem('token')}`,
+  //         "Accept": "application/json, text/plain, */*",
+  //         "Access-Control-Allow-Origin" : "*",
+  //         "Content-Type": false
+  //           }
+  //         }
+  //       )
+  //       console.log('ss',response.data)
+  //       // localStorage.setItem('token', response.data.authorisation.token)
         
-        // localStorage.setItem('role', response.data.user.role)
-        // localStorage.setItem('id', response.data.user.id)
-        // localStorage.setItem('token',response.data.token)    
-        //   console.log(response.status)
-        //   if(response.data.user.type == '2'){
-          //   if(response.data.user.role == 'Student')
-            // navigate('/finputuser') 
-          // else
-            // nav('/students')
-          //  }else{
-            //   setWarning(true)
-            //   localStorage.removeItem('token')
-            //  }
-            navigate("/profile");
-            setLoader(false)
-          }catch(err){
-            console.log(err)
-      console.log(err.response.status)
-      if(err.response && err.response.status && err.response.status == 400){
-      setWarning("not Auth")
-    }else if(err.response.message == "Network Error"){
-      setWarning('Network error')
-    }else if(err.response.status == 500){
-      setWarning('Network error')
-    }
+  //       // localStorage.setItem('role', response.data.user.role)
+  //       // localStorage.setItem('id', response.data.user.id)
+  //       // localStorage.setItem('token',response.data.token)    
+  //       //   console.log(response.status)
+  //       //   if(response.data.user.type == '2'){
+  //         //   if(response.data.user.role == 'Student')
+  //           // navigate('/finputuser') 
+  //         // else
+  //           // nav('/students')
+  //         //  }else{
+  //           //   setWarning(true)
+  //           //   localStorage.removeItem('token')
+  //           //  }
+  //           navigate("/profile");
+  //           setLoader(false)
+  //         }catch(err){
+  //           console.log(err)
+  //     console.log(err.response.status)
+  //     if(err.response && err.response.status && err.response.status == 400){
+  //     setWarning("not Auth")
+  //   }else if(err.response.message == "Network Error"){
+  //     setWarning('Network error')
+  //   }else if(err.response.status == 500){
+  //     setWarning('Network error')
+  //   }
 
-      setLoader(false)
-        }
-        console.log("asd",111)
-    }
+  //     setLoader(false)
+  //       }
+  //       console.log("asd",111)
+  //   }
     
-      const handleLogin = () => {
-    // setLoader(true);
-    if (email === 'admin@example.com') {
-      LoginAPIA();
-    } else {
-      LoginAPIE();
-    }
-    // setLoader(false);
-  };
+  //     const handleLogin = () => {
+  //   // setLoader(true);
+  //   if (email === 'admin@example.com') {
+  //     LoginAPIA();
+  //   } else {
+  //     LoginAPIE();
+  //   }
+  //   // setLoader(false);
+  // };
   return (
     <div className='w-screen h-screen bg-slate-200 flex justify-center items-center'>
         <div className='w-[80%] h-[80%] rounded-2xl md:rounded-s-2xl md:rounded-e-none shadow-lg border-t border-[#86b7fe] shadow-[#86b7fe] flex justify-center items-center'>
@@ -166,7 +171,7 @@ const Login = () => {
             </div>
             <div className='w-[100%] h-[33%] flex justify-center items-center flex-col'>
            {warning ?  <p className='bg-red-300 text-red-600 border-2 border-red-600  p-2 mb-5 rounded-xl'>{warning}</p> : ''}
-                    <button className='w-[55%] h-[25%] rounded-3xl bg-[#7eacf1] text-white hover:bg-[#719bd9] text-sm sm:text-base' onClick={()=>handleLogin()}>{loader ? 
+                    <button className='w-[55%] h-[25%] rounded-3xl bg-[#7eacf1] text-white hover:bg-[#719bd9] text-sm sm:text-base' onClick={()=>LoginAPIA()}>{loader ? 
                     <div className='w-[100%]] h-[100%] flex justify-center items-center'> <div
                     class=" h-6 w-6 animate-spin rounded-full border border-solid border-current border-r-transparent align-[-0.125em] text-secondary motion-reduce:animate-[spin_1.5s_linear_infinite]"
                     role="status">

@@ -16,14 +16,14 @@ const Profile = () => {
         password: ''
     }) 
 
-    const [profile, setProfile] = useState([])
-  //   const profile = {
-  //     name: 'John Doe',
-  //     specialization: 'Software Engineering',
-  //     days: ['Monday', 'Wednesday', 'Friday'],
-  //     gender: 'Male',
-  //     projects: 2
-  // };
+    // const [profile, setProfile] = useState([])
+    const profile = {
+      name: 'John Doe',
+      specialization: 'Software Engineering',
+      days: ['Monday', 'Wednesday', 'Friday'],
+      gender: 'Male',
+      projects: 2
+  };
 
   const [errors, setErrors] = useState({
     name: '',
@@ -167,7 +167,7 @@ projects: ''
      })
      // console.log(response.data)
     //  setLoader(true)
-     setProfile(response.data.data)
+    //  setProfile(response.data.data)
     
    }
    catch(err){
@@ -260,7 +260,7 @@ projects: ''
             </div>
             </>
             :
-            <p className='text-2xl font-semibold'>{profile.admin.name}</p>
+            <p className='text-2xl font-semibold'>{profile.name}</p>
             }
             </div>
             <div className='w-[100%] flex justify-center items-center flex-col gap-2'>

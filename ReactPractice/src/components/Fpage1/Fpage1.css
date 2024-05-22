@@ -1,0 +1,15 @@
+.full-s{
+    margin: 50px  0;
+}
+.container-fff{
+    width: 70%;
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    border-radius: 20px;
+}
+.body--page{    
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}

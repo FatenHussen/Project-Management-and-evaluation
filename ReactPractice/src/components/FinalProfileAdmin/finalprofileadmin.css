@@ -1,0 +1,128 @@
+.container-ff{
+    direction: rtl;
+}
+.profile-body{
+    margin: 2%;
+    width: 95%;
+    padding:0.5%;
+    display: flex;
+    justify-content: space-between;
+}
+.left-f {
+    width: 40%;
+    background-color: rgba(255, 255, 255, 0.8); /* أضف شفافية إلى اللون */
+    
+    padding: 1%;
+    box-shadow: 0cm;
+    border-radius: 20px;
+}
+    
+.right{
+    width: 55%;
+    background-color: white;
+}
+.left-f .styleImg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 50%;
+    padding: 1%;
+    width: 25%;
+    object-fit: cover;
+}
+.left-f h5{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1%;
+    color: aqua;
+    font-size: 28px;
+}
+.left-f label{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1%;
+     display: flex;
+    justify-content: center; /* توسيط العناصر أفقيًا داخل الـ label */ 
+}       
+.left-f .line1{
+    padding-top: 1% 0%;
+    width: 100%;
+    border-bottom: 3px solid rgb(7, 139, 139);
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+.title-f .span1{
+    padding: 2%;
+    display: flex;
+    color: cadetblue;
+    text-align: center;
+    justify-items: center;
+    padding-right: 1%;
+}
+.styleh5{
+    color: grey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.right{
+    padding: 1%;
+    border-radius: 20px;
+    color: rgb(7, 139, 139);
+}
+.line2{
+    padding-top: 1% 0%;
+    width: 100%;
+    border-bottom: 3px solid rgb(7, 139, 139);
+}
+.body-right{
+    width: 100%;
+}
+.partone1 label{
+    width: 20%px;
+}
+.part1-f{
+    width: 100%;
+    margin: 1.5%;
+}
+.part1-f label{
+    padding: 2%;
+}
+.part1-f span{
+    color: rgb(7, 139, 139);
+}
+.img2-ff{
+    width: 100%;
+}
+.link-f {
+
+    color: blue; /* لون النص */
+    text-decoration: none; /* لإزالة التأثيرات الافتراضية مثل التسطير */
+    font-weight: bold; /* سماكة الخط */
+    display: flex;
+    justify-content: center;
+    padding-top: 2%;
+}
+
+.link-f:hover {
+    color: darkblue; /* لون النص عند تحويل المؤشر فوقه */
+}
+.styleImg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 50%;
+    padding: 1%;
+    width: 25%;
+    height: 25%; 
+    background-color: lightgray; 
+}
+.body-ft{
+    width: 95%;
+    background-color: white;
+    padding: 0.5%;
+    border-radius: 20px;
+    margin: 2%;
+}

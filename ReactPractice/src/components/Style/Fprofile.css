@@ -1,0 +1,23 @@
+.header-0{
+    flex: 1;
+    background-color: #f9f9f9;
+    height: 95%;
+    width: 75%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.edit--admin{
+    display: flex;
+    flex-direction: column;
+    direction: rtl;
+    align-items: center;
+}
+.img--t{
+    padding-top:10%;
+    width: 100%;
+    height: 450px;
+    
+}
+.porfile--header{
+    background: #e3fcff;
+}

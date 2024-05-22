@@ -1,0 +1,169 @@
+.App {
+    direction: rtl;
+    font-family: Arial, sans-serif;
+    max-width: 100%;
+    padding: 20px;
+
+    
+  }
+  .left{
+    width: 30%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    gap: 20px;
+  }
+  .left h2{
+    display: flex;
+    justify-content: center;
+    direction: rtl;
+    position: relative;
+  }
+  
+  .magd1{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin-bottom: 20px;
+  } 
+  .magd1 h2{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(7, 139, 139);
+    font-weight: 500;
+  }
+  .img0{
+    width: 200px;
+    height: 200px;
+  }
+  .text0{
+    display: flex;
+    justify-content: space-between;
+  }
+  .text0 h3{
+    padding-top: 70px;
+    color: rgb(60 96 96);
+  }
+  .header22 {
+    direction: rtl;
+    width: 95%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 1.5%;
+    margin: 3%;
+}
+  h1 {  
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  label {
+    margin-bottom: 5px;
+    color: cornflowerblue;
+    font-weight: bold;
+    font-size: 22px;
+    
+  }
+  .body1-f{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  input,
+  select {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+.header-ff{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+.part1{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 48%;
+  padding-bottom: 15px;
+  margin-top: 3%;
+  position: relative;
+}
+.part1 input{
+  height: 40px;
+  width: 98%;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #dde6ed;
+  padding: 0 20px;
+  display: flex;
+}
+.part1 select{
+  height: 100%;
+  width: 98%;
+  border-radius: 20px;
+  outline: none;
+  border:none;
+  border-bottom: 2px solid #dde6ed;
+  padding: 4px 10px;
+  font-size: 20px;
+}
+.error1o{
+  position: absolute;
+  top: 88%;
+  color: red;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  
+}
+
+@media screen  and (max-width:411px){
+  .text0{
+    display: flex;
+    flex-direction: column;
+  }
+  .img0{
+    margin-right:20% ;
+  }
+  .text0 h3{
+    font-size: 16px;
+    text-align: center;
+  }
+  .form{
+    display: flex;
+    flex-direction: column;
+  }
+  .body1-f{
+    display:block
+  }
+  .part1{
+    width: 100%;
+  }
+}
+
+.test1{
+  background-color: white;
+}
+@media screen  and (max-width:768px){
+  .text0 h3{
+    font-size: 16px;
+    text-align: center;
+  }
+}

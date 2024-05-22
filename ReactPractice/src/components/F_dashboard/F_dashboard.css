@@ -1,0 +1,44 @@
+.header50{
+    background-color: aliceblue;
+    width: 95%;
+    margin: 25px;
+    padding: 25px;
+    border-radius: 20px;
+}
+.header50 span{
+    padding-right: 1%;
+    padding-left: 1%;
+}
+.imgq{
+    margin: 2%;
+    width: 40%;
+    height: 40%;
+}
+.header50 .imgq1{
+    margin: 2%;
+    width: 33%;
+    height: 25%;
+
+}
+.partone{
+    border-radius: 20px;
+    margin: 2%;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    
+}
+.parttow{
+    
+    width: 95%;
+    margin: 25px;
+    padding: 25px;
+    border-radius: 20px;
+}
+.container--qt{
+    padding: 2%;
+}
+.icon-eye{
+    width: 10%;
+    text-align: center;
+}

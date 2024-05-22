@@ -1,0 +1,165 @@
+
+.header2{
+    text-align: center;
+}
+.App2 .header img{
+    width: 100px;
+    height: 100px;
+}
+hr{
+  color:blue ;
+}
+.magd{
+  display: flex; 
+  justify-content: center;
+  position: relative;
+}
+.App2 {
+    color: #0056b3;
+    font-size: 16px;
+    width: 95%;
+    height: 100%;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    background-color: #fff;
+    border: none;
+  } 
+  .App2 div{
+    transform: scale(0.99);
+  }
+  .header {
+    width: 50%;
+    height: 95%;
+    direction: rtl;
+  }
+  .body0 {
+    display: flex;
+    background-color: #f9f9f9;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .body2{
+    width: 95%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: blue;
+    font-weight: 400;
+  }
+  
+  .buttom{
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 10%;
+    height: 10%;
+    border-radius: 10px;
+    position: absolute;
+    left: 400px;
+    bottom: 20px;
+  }
+  .save{    
+    width: 30%;
+    height: 30%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  .days{
+    display: flex;
+    flex-direction: column;
+  }
+  .days1{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .selected-day{
+    border-top: 0.1px solid blue;
+    padding: 20px;
+  }
+  .body2 input{
+    border-radius: 50px;
+  }
+  
+  label {
+    display: block;
+  }
+ .h2{
+    font-weight: 700;
+    color: black;
+ }
+  
+  .input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* لجعل حجم الحقل متوافقًا مع padding */
+    margin-bottom: 10px;
+  }
+  
+  input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  
+  .but {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  .contener2{
+    width: 100%;
+    height: 100%;
+}
+
+.img01{
+  width: 20%;
+  height: 20%;
+}
+.teable--f{
+  direction: rtl;
+  padding: 20px;
+  width: 90%;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 20px;
+  margin-top: 2%;
+  margin-right: 2%;
+}
+section input{
+  border-radius: 20px;
+}
+.page-f{
+  display: flex;
+  justify-content: space-between;
+} 
+.app0{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+.icon--admin{
+  width: 100px;
+  height: 100px;
+}
+.icon-ft{
+  width: 30px;
+  height: 30px;
+}

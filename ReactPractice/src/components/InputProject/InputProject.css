@@ -1,0 +1,30 @@
+.text-t{
+    width: 90%;
+    background-color: aliceblue;
+    direction: rtl;
+}
+.body-tt{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.style{
+    margin-top:1% ;
+    padding: 1%;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    width: 50%;
+    line-height: 55px;
+}
+.part-1{
+    width: 98%;
+    margin: 1%;
+    padding: 1%;
+    display: flex;
+    background-color: rgb(7, 139, 139);
+    justify-content: space-between;
+    border-radius: 20px;
+    
+}

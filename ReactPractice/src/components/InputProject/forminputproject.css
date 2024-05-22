@@ -1,0 +1,278 @@
+.part11{
+        /* display: flex; */
+        flex-wrap: wrap;
+        width: 50%;
+        padding-bottom: 15px;
+    }
+   
+.part11 input{
+    height: 40px;
+    width: 95%;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #dde6ed;
+    padding: 0 20px;
+    display: flex;
+}
+.part22{
+    display: flex;
+    flex-wrap: wrap;
+}
+.partt-2 {
+    width: 50%;
+}
+.partt-2 input{
+    height: 40px;
+    width: 95%;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #dde6ed;
+    padding: 0 20px;
+    display: flex;
+}
+.part11 label{
+    color: rgb(7, 139, 139);
+}
+.part22 label{
+    color: rgb(7, 139, 139);
+}
+.part-A{
+    margin: 1%;
+    padding: 1%;
+    border-radius: 20px;
+    width: 30%;
+     background-color: rgb(7, 139, 139)
+
+}
+.part-B{
+    margin: 1%;
+    padding: 1%;
+    border-radius: 20px;
+    margin: 1%;
+    width: 30%;
+    background-color: rgb(7, 139, 139);
+}
+.part-C{
+    margin: 1%;
+    padding: 1%;
+    border-radius: 20px;
+    margin: 1%;
+    width: 30%;
+    background-color: rgb(7, 139, 139);
+}
+.body-A{
+    display: flex;
+    justify-content: space-between;
+}
+.style-A{
+    padding: 1.5%;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+}
+.student-s{
+    padding-right:4% ;
+}
+.inputtext{
+    width: 90%;
+    margin: 3%;
+}
+.inputcheck{
+    width: 10%;
+}
+.inputtexta{
+    width: 90%;
+    margin-top: 5%;
+    padding: 2.5%;
+    background-color: white;
+    margin: 3%;
+
+}
+.error1{
+    font-size: 16px;
+    font-weight: 400;
+    padding: 1% 0;
+    margin: 2%;
+    color: red;
+    background-color: #dde6ed;
+    text-align: center;
+    border-radius: 20px;
+}
+@media screen and (max-width: 519px) {
+    .part-1{
+        display: flex;
+        width: 100%;
+        
+    }
+    .style{
+        width: 100%;
+        line-height: 25px ;
+        font-size: 14px;
+        text-align: center;
+        margin: auto;
+    }
+    .part-1 img{
+        width: 45%;
+        padding: 2.5%;
+        border-radius: 20px;
+    }
+    .body-A{
+        display: flex;
+        margin: 2%;
+        margin-bottom: 2%;
+        flex-wrap: wrap;
+    }
+    .body-A .part-A{
+        width:45%;
+    }
+    .body-A .part-B{
+        width:45%;
+    }
+    .body-A .part-C{
+        width:100%;
+        display: flex;
+    }
+    .part-C .style-A{
+        font-size: 16px;
+        height: 100%;
+    }
+    .style-A{
+        font-size: 14px;
+    }
+     .inputtext{
+        height: 27px;
+    }
+    .line{
+        width:45%;
+    }
+    .style-h2 img{
+        width: 20%;
+        height: 400px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .part-1{
+        display: flex;
+        width: 95%;
+        
+    }
+    .part-C input select{
+        margin-right: 6px;
+    }
+    .student-s input{
+        margin: 3%;
+    }
+    .style{
+        width: 100%;
+        line-height: 25px ;
+        font-size: 14px;
+        text-align: center;
+        margin: auto;
+    }
+    .part-1 img{
+        width: 30%;
+        height: 20vh;
+        padding: 2.5%;
+        border-radius: 20px;
+    }
+    .body-A{
+        display: flex;
+        margin: 2%;
+        margin-bottom: 2%;
+        flex-wrap: wrap;
+    }
+    .body-A .part-A{
+        width:45%;
+    }
+    .body-A .part-B{
+        width:45%;
+    }
+    .body-A .part-C{
+        width:100%;
+        display: flex;
+    }
+    .part-C .style-A{
+        font-size: 16px;
+        height: 100%;
+        text-align: center;
+        align-items: center;
+        display: flex;
+        padding: 20px;
+    }
+    .style-A{
+        font-size: 14px;
+    }
+
+    .line{
+        width:45%;
+    }
+    .style-h2 img{
+        width: 20%;
+        height: 400px;
+    }
+    
+}
+@media screen and (max-width: 1050px) {
+    .part-1{
+        display: flex;
+        width: 95%;
+        
+    }
+    .part-C input select{
+        margin-right: 6px;  
+    }
+    .student-s input{
+        margin: 3%;
+    }
+    .style{
+        width: 100%;
+        line-height: 25px ;
+        font-size: 18px;
+        text-align: center;
+        margin: auto;
+    }
+    .part-1 img{
+        width: 40%;
+        height: 30vh;
+        padding: 2.5%;
+        border-radius: 20px;
+    }
+    .body-A{
+        display: flex;
+        margin: 2%;
+        margin-bottom: 2%;
+        flex-wrap: wrap;
+    }
+    .body-A .part-A{
+        width:45%;
+    }
+    .body-A .part-B{
+        width:45%;
+    }
+    .body-A .part-C{
+        width:100%;
+        display: flex;
+    }
+    .part-C .style-A{
+        font-size: 16px;
+        height: 100%;
+        text-align: center;
+        align-items: center;
+        display: flex;
+        padding: 20px;
+    }
+    .style-A{
+        font-size: 18px;
+    }
+
+    .line{
+        width:45%;
+    }
+    .style-h2 img{
+        width: 40%;
+        height: 400px;
+    }
+    
+}

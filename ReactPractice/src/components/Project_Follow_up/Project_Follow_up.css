@@ -1,0 +1,11 @@
+.body-P{
+    background-color: aliceblue;
+    width: 95%;
+    margin: 25px;
+    padding: 20px;
+    border-radius: 20px;
+}
+.form-ff-project{
+    display: flex;
+    justify-content: space-between;
+}

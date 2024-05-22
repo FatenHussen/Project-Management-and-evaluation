@@ -1,0 +1,26 @@
+.container9{
+    font-family: Arial, sans-serif;
+    min-height: 90vh;
+    min-width: 90vh;
+    background-color: aliceblue;
+}
+.header9{
+    width: 50%;
+    min-height: 30vw;
+    margin: 50px;
+    padding: 20px;
+    border: 10px solid red;
+    display: flex;
+    position: relative;
+    left: 250px;
+    
+    flex-direction: column;
+}
+.text9{
+    border-collapse: collapse;
+    padding: 20px; 
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+
+}

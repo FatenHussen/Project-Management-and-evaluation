@@ -1,0 +1,27 @@
+.part1-follow{
+    display: flex;
+    width: 25%;
+    padding-right: 3%;
+    text-align: center;
+}
+.part-follow{
+    margin-top: 5%;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+.line1{
+    width: 20%;
+    border-bottom: 3px solid rgb(7, 139, 139);
+}
+.part1-follow span{
+    padding-right: 3%;
+    margin-right: 1%;
+    font-size: 18px;
+    font-weight: 500;
+}
+@media screen and (max-width:1050px) {
+    .part1-follow {
+         margin-right: 0; 
+    }
+}

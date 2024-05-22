@@ -1,0 +1,113 @@
+
+.header5{
+    width: 95%;
+    height: 100%;
+    margin: 20px ;
+    padding: 35px;
+    background-color: aliceblue;
+    border-radius: 20px;
+}
+.style-h2{
+    color: rgb(7, 139, 139);
+}
+.line{
+   width: 25%;
+    height: 1%;
+    border-bottom: 3px solid rgb(7, 139, 139);
+}
+.line10{
+    height: 1%;
+    border-bottom: 3px solid rgb(7, 139, 139);
+    width: 100;
+}
+.style-h4{
+    padding: 20px;
+    width: 50%;
+    height: 100%;
+    font-weight: 400;
+    color: white;
+    line-height: 55px;
+}
+.body09{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    width: 100%;
+    height: 50%;
+    background-color: rgb(7, 139, 139);
+    font-size: 28px;
+    border-radius: 20px;
+}
+@media screen and (max-width:400px) {
+    .body09{
+        display: flex;
+        flex-direction: column;
+    }
+    .style-h4{
+        padding: 10px;
+        width: 100%;
+        line-height: 40px;
+        font-size: 18px;
+    }
+    .img-g{
+        min-width: 100%;
+    }
+    .form-ff{
+        display: flex;
+        flex-direction: column;
+    }
+    .menu-f{
+        direction: rtl;
+        font-family: cursive;
+        margin: 20px;
+    }
+    .containner{
+        direction: rtl;
+    display: flex;
+    }
+}
+@media screen and (max-width:768px) {
+    .body09{
+        display: flex;
+        flex-direction: column;
+    }
+    .style-h4{
+        padding: 10px;
+        width: 100%;
+        line-height: 40px;;
+        font-size: 14px;
+    }
+    .img-g{
+        min-width: 100%;
+    }
+    .form-ff{
+        display: flex;
+        flex-direction: column;
+    }
+    .menu-f{
+        direction: rtl;
+        font-family: cursive;
+        margin: 20px;
+    }
+    .containner{
+        direction: rtl;
+    display: flex;
+    }
+}
+.img-g{
+    width: 45%;
+    height: 100%;
+    
+}
+/* form */
+.form-ff{
+    width:100%;
+    margin: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.td33{
+    color: rgba(0, 0, 0, 0.590);
+}

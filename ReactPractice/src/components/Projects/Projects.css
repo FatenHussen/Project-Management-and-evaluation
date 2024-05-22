@@ -1,0 +1,161 @@
+.title{
+    font-size: 24px;
+    color : rgb(7, 139, 139)
+}
+
+.project{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.names_container{
+    /* background-color: black; */
+    width: 98%;
+    height: 75%;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+.students_name h4 {
+    font-size: 16px;
+}
+.students_name{
+    width: 45%;
+    height: 90%;
+    padding: 20px;
+}
+
+.students_name h4{
+    font-size: 22px;
+}
+
+.students_name ul{
+    list-style: circle;
+    font-size: 18px;
+    font-weight: bolder;
+    color: rgb(114, 114, 114);
+}
+
+.buttons_container {
+    width: 98%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: aqua; */
+}
+.project_button{
+    width: 23%;
+    height: 70%;
+    background-color: #27374d;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.project_button button{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: transparent;
+    margin-top: 0px;
+    padding: 0px;
+    color: #fff;
+    border: none;
+    border-radius: 0px;
+    cursor: pointer;
+
+}
+
+.project_button:hover{
+    background-color: #27374de2;
+}
+.header50 {
+    width: 95%;
+    height: 100%;
+    margin: 2.5%;
+    padding: 2%;
+    background-color: aliceblue;
+    border-radius: 20px;
+}
+@media screen and (max-width:678px) {
+    .names_container{
+        display: flex;
+        flex-direction: column;
+        align-items: first baseline;
+    }
+    .students_name{
+        width: 100%;
+        height: 90%;
+        padding: 4.5%;
+    }
+    .students_name ul {
+        width: 100%;
+        list-style: circle;
+        font-size: 14px;
+        font-weight: bolder;
+        color: rgb(114, 114, 114);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 0.5px;
+    }
+    .students_name li{
+        padding: 2%;
+        width: 50%;
+        
+    }
+    .buttons_container {
+        width: 98%;
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        /* background-color: aqua; */
+    }
+    .project_button {
+        margin:1.5% 0 ;
+        width: 45%;
+        height: 46px;
+        background-color: #27374d;
+        border-radius: 8px;
+        text-align: center;
+    }
+    .title {
+        font-size: 16px;
+        color: rgb(7, 139, 139);
+    }
+    .part-follow {
+        margin-top: 5%;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: space-around;
+    }
+    .part1-follow {
+        display: flex;
+        width: 100%;
+        padding-left: 3%;
+        text-align: center;
+    }
+    .part-follow h5{
+        font-size: 16px;
+        font-weight: 500;
+        margin-top: 2%;
+    }
+    part1-follow span {
+        padding-right: 3%;
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+}
+@media screen and (max-width:768px){
+    .students_name h4 {
+        font-size: 16px;
+    }
+}

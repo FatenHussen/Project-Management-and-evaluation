@@ -86,7 +86,7 @@ const ProjectsTable = ({projects, type}) => {
         <th className='w-[25%] bg-[#27374d] rounded-tl-xl p-2 text-lg text-white'>التفاصيل</th> 
         :''}
       </tr>
-     {filteredProjects.length > 0 ? filteredProjects.map((project, index) => (
+     {filteredProjects.length > 0 ? filteredProjects.map((project, index) => ( 
         <tr className='bg-[#d4d4ef]' key={index}>
         <td className={`${!type ? 'w-[25%]' : 'w-[33%]'} h-16 text-center text-lg`}>{project.name}</td>
         <td className={`${!type ? 'w-[25%]' : 'w-[33%]'} h-16 text-center text-lg ${project.status == 'Completed' ? 'text-green-600' : 'text-yellow-600' }`}>{project.status}</td>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import DetailsModel from './DetailsModel';
 
 const SupervisorsTable = ({ supervisors, type }) => {
 
@@ -17,6 +18,8 @@ const SupervisorsTable = ({ supervisors, type }) => {
   };
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [filters, setFilters] = useState(initialFilters);
+  const [model, setModel] = useState(false)
+  const [projectID, setProjectID] = useState(0)
   const [filteredSupervisors, setFilteredSupervisors] = useState(supervisors);
 
   const handleFilterChange = (e) => {
@@ -113,11 +116,11 @@ const SupervisorsTable = ({ supervisors, type }) => {
             <td className={`${type ? 'w-[25%]' : 'w-[33%]'} h-16 text-center text-lg`}>{supervisor.work_days.join(', ')}</td>
             <td className={`${type ? 'w-[25%]' : 'w-[33%]'} h-16 text-center text-lg`}>{supervisor.specialization}</td>
             {type ? 
-          <td className='w-[25%] text-center'>
-          <button className='w-[50%] border-2 border-[#27374d] rounded-xl p-2 text-lg font-bold text-[#27374d] hover:border-[#27374db2] hover:text-[#27374db2]' >التفاصيل</button>
+          <td className='w-[25%] text-center relative'>
+          <button className='w-[50%] border-2 border-[#27374d] rounded-xl p-2 text-lg font-bold text-[#27374d] hover:border-[#27374db2] hover:text-[#27374db2]' onClick={()=>{setModel(true); setProjectID(supervisor.id)}}>التفاصيل</button>
       </td>
        : 
-      ''}
+       ''}
           </tr>
         ))}
       </table>
@@ -125,6 +128,7 @@ const SupervisorsTable = ({ supervisors, type }) => {
       {filteredSupervisors.length < 1 ?
         <p className='w-[100%] text-center text-xl text-[#27374d] -mt-5'>لا يوجد مشرفين</p>
         : ''}
+        <DetailsModel visible={model} onClose={()=>setModel(false)} id={projectID}/>
     </div>
   );
 };

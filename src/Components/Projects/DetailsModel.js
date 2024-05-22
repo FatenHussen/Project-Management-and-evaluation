@@ -12,7 +12,7 @@ const DetailsModel = ({onClose, visible, id}) => {
         };
       }, [visible]);  
   console.log('ids', id)
-
+ 
 
     if(!visible) return null;
 

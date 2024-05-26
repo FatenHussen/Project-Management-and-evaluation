@@ -54,15 +54,14 @@ const SupervisorsTable = ({ type }) => {
 
   const applyFilters = () => {
     const filtered = employees.filter(supervisor => {
-      return (
-        (filters.name === '' || supervisor.name.toLowerCase().includes(filters.name.toLowerCase())) &&
-        (filters.specialization === '' || supervisor.specialization.toLowerCase().includes(filters.specialization.toLowerCase())) &&
-        (filters.work_days.length === 0 || filters.work_days.some(day => supervisor.work_days.includes(day)))
-      );
+        return (
+            (filters.name === '' || supervisor.name.toLowerCase().includes(filters.name.toLowerCase())) &&
+            (filters.specialization === '' || (supervisor.specialization_id !== null && supervisor.specialization_id.toString().includes(filters.specialization))) &&
+            (filters.work_days.length === 0 || filters.work_days.some(day => supervisor.work_days.includes(day)))
+        );
     });
     setFilteredSupervisors(filtered);
 };
-
 
   const clearFilters = () => {
     setFilters(initialFilters);
@@ -120,9 +119,9 @@ const SupervisorsTable = ({ type }) => {
             <label htmlFor='specialization' className='absolute -top-3 right-0 font-semibold'>الاختصاص</label>
             <select name="specialization" value={filters.specialization} className='w-[100%] h-10 outline-none rounded-lg border-2 border-[#27374d] p-2 text-black' onChange={handleFilterChange}>
               <option value=''></option>
-              {/* {employees.map((supervisor, index) => (
-              <option value={supervisor.specialization}>{supervisor.specialization}</option>
-            ))} */}
+              <option value={1}>شبكات حاسوبية</option>
+              <option value={2}>هندسة البرمجيات</option>
+              <option value={3}>الذكاء الصنعي</option>
             </select>
           </div>
           <div className='w-[100%] md:w-[80%] h-[48%] flex justify-center items-center flex-col relative '>

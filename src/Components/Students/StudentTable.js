@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const StudentTable = ({students}) => {
+const StudentTable = ({students, setFilteredStudents, data}) => {
 
   const initialFilters = {
     year: '',
@@ -12,8 +12,7 @@ const StudentTable = ({students}) => {
   const [student_num, setStudent_num] = useState(0)
 
   const [filters, setFilters] = useState(initialFilters);
-  const [filteredStudents, setFilteredStudents] = useState(students);
-  console.log('pp',filters, filteredStudents)
+  console.log('pp',filters, students) 
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
@@ -24,12 +23,12 @@ const StudentTable = ({students}) => {
   };
 
   const applyFilters = () => {
-    const filtered = students.filter(student => {
+    const filtered = data.filter(student => {
       return (
-        (filters.year === '' || student.year.toString() === filters.year) &&
+        (filters.year === '' || student.academic_year_id.toString() === filters.year) &&
         (filters.semester === '' || student.semester.toString() === filters.semester) &&
         (filters.name === '' || student.name.toLowerCase().includes(filters.name.toLowerCase())) &&
-        (filters.minHours === '' || student.totalHours >= parseInt(filters.minHours)) 
+        (filters.minHours === '' || student.hours_completed == parseInt(filters.minHours)) 
         // (filters.maxHours === '' || student.totalHours <= parseInt(filters.maxHours))
       );
     });
@@ -38,7 +37,7 @@ const StudentTable = ({students}) => {
 
   const clearFilters = () => {
     setFilters(initialFilters);
-    setFilteredStudents(students);
+    setFilteredStudents(data);
   };
 
 
@@ -55,9 +54,9 @@ const StudentTable = ({students}) => {
           <label htmlFor='semester' className='absolute md:top-2 -top-6 right-0 font-semibold'>الفصل المشروع</label>
       <select name="semester" value={filters.semester} className='w-[100%] h-10 outline-none rounded-lg border-2 border-[#27374d] p-2 text-black' onChange={handleFilterChange}>
         <option value=''></option>
-        <option value='1'>1</option>
-        <option value='2'>2</option>
-        <option value='3'>3</option>
+        <option value='الفصل الأول'>الفصل الأول</option>
+      <option value='الفصل الثاني'>الفصل الثاني</option>
+      <option value='الفصل الصيفي'>الفصل الصيفي</option>
       </select>
       </div>
       <div className='w-[100%] md:w-[22%] h-[100%] flex justify-center items-center flex-col relative '>
@@ -93,19 +92,20 @@ const StudentTable = ({students}) => {
           <th className='w-[25%] bg-[#27374d] p-2 text-lg text-white'>الساعات</th>
           <th className='w-[25%] bg-[#27374d] rounded-tl-xl p-2 text-lg text-white'>الفصل المشروع</th>
         </tr>
-       {filteredStudents.length > 0 ? filteredStudents.map((student, index) => (
+       {students.length > 0 ? students.map((student, index) => (
           <tr className='bg-[#d4d4ef]' key={index}>
           <td className='w-[25%] h-16 text-center text-lg'>{student.name}</td>
-          <td className='w-[25%] h-16 text-center text-lg'>{student.year}</td>
-          <td className='w-[25%] h-16 text-center text-lg'>{student.totalHours}</td>
+          <td className='w-[25%] h-16 text-center text-lg'>{student.academic_year_id == 5 ? 'السنة الخامسة' : student.academic_year_id == 4 ? 'السنة الرابعة' : student.academic_year_id == 3 ? 'السنة الثالثة' : student.academic_year_id == 2 ? 'السنة الثانية' : student.academic_year_id == 1 ? 'السنة الأولى' : ''}</td>
+          <td className='w-[25%] h-16 text-center text-lg'>{student.hours_completed}</td>
           <td className='w-[25%] h-16 text-center text-lg'>{student.semester}</td>
         </tr>
-        )) : ''}
+    )) : 
+    <p className='w-[100%] text-center text-xl text-[#27374d] -mt-5'>لا يوجد طلاب</p>}
       </table>
       </div>
-      {filteredStudents.length  < 1 ? 
+      {/* {filteredStudents.length  < 1 ? 
       <p className='w-[100%] text-center text-xl text-[#27374d] -mt-5'>لا يوجد طلاب</p>
-      : ''}
+      : ''} */}
     </div>
   )
 }

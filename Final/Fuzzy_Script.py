@@ -6,7 +6,7 @@ if len(sys.argv) > 1:
     print("evaluation students",predictions)
 
 # ************************
-print("yes")
+print("yess")
 value_list_for_eval=[]
 for i in range(len(predictions)):
     if  predictions[i]=="أحمر":

@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
 import DetailsModel from './DetailsModel';
 
-const ProjectsTable = ({projects, type}) => {
+const ProjectsTable = ({type}) => {
 
     const initialFilters = {
         semester: '',
@@ -9,10 +10,11 @@ const ProjectsTable = ({projects, type}) => {
         status: ''
       };
       const [projectID, setProjectID] = useState(0)
+      const [supervisors, setSupervisors] = useState([])
       const [project_num, setProject_num] = useState(0)
       const [model, setModel] = useState(false)
       const [filters, setFilters] = useState(initialFilters);
-      const [filteredProjects, setFilteredProjects] = useState(projects ? projects : []);
+      const [filteredProjects, setFilteredProjects] = useState(supervisors);
       console.log('pp',filters, filteredProjects)
     
       const handleFilterChange = (e) => {
@@ -24,11 +26,11 @@ const ProjectsTable = ({projects, type}) => {
       };
     
       const applyFilters = () => {
-        const filtered = projects.filter(project => {
+        const filtered = supervisors.filter(project => {
           return (
             (filters.name === '' || project.name.toLowerCase().includes(filters.name.toLowerCase())) &&
-            (filters.semester === '' || project.semester.toLowerCase().includes(filters.semester.toLowerCase())) &&
-            (filters.status === '' || project.status.toLowerCase().includes(filters.status.toLowerCase()))
+            (filters.semester === '' || project.semester_id.toString().includes(filters.semester)) &&
+            (filters.status === '' || project.proposal.toLowerCase().includes(filters.status.toLowerCase()))
             // (filters.maxHours === '' || student.totalHours <= parseInt(filters.maxHours))
           );
         });
@@ -37,9 +39,38 @@ const ProjectsTable = ({projects, type}) => {
     
       const clearFilters = () => {
         setFilters(initialFilters);
-        setFilteredProjects(projects);
+        setFilteredProjects(supervisors);
       };
     
+      const supListURlAPI='http://127.0.0.1:8000/admin/project/all'
+  async function get_supervisor(){
+    // setLoader(false) 
+   try{
+     const response =await axios.get(supListURlAPI,{
+       headers:{
+         "Authorization":`Bearer ${localStorage.getItem('token')}`,
+         "Access-Control-Allow-Origin": "*",
+       "Content-Type": "multipart/form-data",
+
+       }
+     })
+     console.log(response.data.data)
+    //  setLoader(true)
+    setSupervisors(response.data.data)
+    setFilteredProjects(response.data.data)
+    
+   }
+   catch(err){
+     console.log(err)
+   }
+  }
+
+  useEffect( ()=>{
+    console.log(localStorage.getItem('token'))
+    get_supervisor()
+  //  setAddEmployee1(false)
+   console.log(supervisors)
+   },[])
 
   return (
     <div className='w-[100%]'>
@@ -49,9 +80,9 @@ const ProjectsTable = ({projects, type}) => {
         <label htmlFor='semester' className='absolute md:top-2 -top-6 right-0 font-semibold'>الفصل المشروع</label>
     <select name="semester" value={filters.semester} className='w-[100%] h-10 outline-none rounded-lg border-2 border-[#27374d] p-2 text-black' onChange={handleFilterChange}>
       <option value=''></option>
-      <option value='Spring 2023'>1</option>
-      <option value='2'>2</option>
-      <option value='3'>3</option>
+      <option value={1}>الفصل الأول</option>
+      <option value={2}>الفصل الثاني</option>
+      <option value={3}>الفصل الصيفي</option>
     </select>
     </div>
     {/* <div className='w-[22%] h-[100%] flex justify-center items-center flex-col relative '>
@@ -89,8 +120,8 @@ const ProjectsTable = ({projects, type}) => {
      {filteredProjects.length > 0 ? filteredProjects.map((project, index) => ( 
         <tr className='bg-[#d4d4ef]' key={index}>
         <td className={`${!type ? 'w-[25%]' : 'w-[33%]'} h-16 text-center text-lg`}>{project.name}</td>
-        <td className={`${!type ? 'w-[25%]' : 'w-[33%]'} h-16 text-center text-lg ${project.status == 'Completed' ? 'text-green-600' : 'text-yellow-600' }`}>{project.status}</td>
-        <td className={`${!type ? 'w-[25%]' : 'w-[33%]'} h-16 text-center text-lg`}>{project.semester}</td>
+        <td className={`${!type ? 'w-[25%]' : 'w-[33%]'} h-16 text-center text-lg ${project.proposal == 'pending' ? 'text-yellow-600' : 'text-green-600' }`}>{project.proposal}</td>
+        <td className={`${!type ? 'w-[25%]' : 'w-[33%]'} h-16 text-center text-lg`}>{project.semester_id == 1 ? 'الفصل الأول' : project.semester_id == 2  ? 'الفصل الثاني' : project.semester_id == 3  ? 'الفصل الصيفي' : ''}</td>
         {!type ? 
           <td className='w-[25%] text-center'>
           <button className='w-[50%] border-2 border-[#27374d] rounded-xl p-2 text-lg font-bold text-[#27374d] hover:border-[#27374db2] hover:text-[#27374db2]' onClick={()=>{setModel(true); setProjectID(project.id)}}>التفاصيل</button>

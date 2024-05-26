@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const StudentTable = ({students, setFilteredStudents, data}) => {
+const StudentTable = ({students, setFilteredStudents, data, student_num}) => {
 
   const initialFilters = {
     year: '',
@@ -9,7 +9,6 @@ const StudentTable = ({students, setFilteredStudents, data}) => {
     minHours: '',
     maxHours: ''
   };
-  const [student_num, setStudent_num] = useState(0)
 
   const [filters, setFilters] = useState(initialFilters);
   console.log('pp',filters, students) 

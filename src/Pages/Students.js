@@ -8,6 +8,8 @@ const Students = () => {
 
   const [students, setStudents] = useState([]) 
   const [filteredStudents, setFilteredStudents] = useState(students);
+  const [student_num, setStudent_num] = useState(0)
+
 
   const empListURlAPI='http://127.0.0.1:8000/admin/users/all'
   async function get_employee(){
@@ -25,6 +27,8 @@ const Students = () => {
     //  setLoader(true)
     setStudents(response.data.data)
     setFilteredStudents(response.data.data)
+    setStudent_num(response.data.data.length);
+
     
    }
    catch(err){
@@ -55,7 +59,7 @@ const Students = () => {
         <Chart students={students}/>
         </div> 
         <div className='w-[90%] h-fit'>
-          <StudentTable students={filteredStudents} setFilteredStudents={setFilteredStudents} data={students}/>
+          <StudentTable student_num={student_num} students={filteredStudents} setFilteredStudents={setFilteredStudents} data={students}/>
         </div>
       </div>
     </div>

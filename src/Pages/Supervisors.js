@@ -104,7 +104,6 @@ const Supervisors = () => {
           }
         ]
       
-      const [supervisor_num, setSupervisor_num] = useState(0)
       const [view, setView] = useState(false)
       
 
@@ -117,10 +116,6 @@ const Supervisors = () => {
         <div className='w-[90%] h-12 flex justify-center items-center gap-4 text-[#27374d]'>
           <p className={`text-lg font-semibold py-1 px-2 cursor-pointer ${view ? 'border-b-2 border-[#27374d]' : ''}`} onClick={()=>setView(true)}>المشاريع</p>
           <p className={`text-lg font-semibold py-1 px-2 cursor-pointer ${!view ? 'border-b-2 border-[#27374d]' : ''}`} onClick={()=>setView(false)}>المشرفين</p>
-        </div>
-      <div className='w-[90%] h-[100px] mt-5 flex justify-between items-center'>
-      <p className='text-right text-xl md:text-3xl font-bold text-[#27374d]'>عدد المشرفين: <span className='text-xl md:text-3xl font-semibold'> {supervisor_num} </span></p>
-        <p className='text-right text-xl md:text-3xl font-bold text-[#27374d]'>المشرفين</p>
         </div>
         <div className='w-[90%] h-fit'>
           {!view ? <SupervisorsTable supervisors={supervisors}/> : <SupervisorsProjects projects={superProjects}/>}

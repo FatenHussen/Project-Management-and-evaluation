@@ -23,6 +23,8 @@ const SupervisorsTable = ({ type }) => {
   const [model, setModel] = useState(false)
   const [projectID, setProjectID] = useState(0)
   const [filteredSupervisors, setFilteredSupervisors] = useState(employees);
+  const [supervisor_num, setSupervisor_num] = useState(0)
+
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
@@ -84,6 +86,7 @@ const SupervisorsTable = ({ type }) => {
     //  setLoader(true)
     setEmployees(response.data.data)
     setFilteredSupervisors(response.data.data)
+    setSupervisor_num(response.data.data.length)
     
    }
    catch(err){
@@ -100,6 +103,10 @@ const SupervisorsTable = ({ type }) => {
 
   return (
     <div className='w-[100%]'>
+      <div className='w-[90%] h-[100px] mt-5 flex justify-between items-center'>
+      <p className='text-right text-xl md:text-3xl font-bold text-[#27374d]'>عدد المشرفين: <span className='text-xl md:text-3xl font-semibold'> {supervisor_num} </span></p>
+        <p className='text-right text-xl md:text-3xl font-bold text-[#27374d]'>المشرفين</p>
+        </div>
       <div className='w-[100%] h-96 md:h-60 flex justify-center items-center flex-col mb-5'>
         <div className='w-[100%] h-[100%] md:h-[60%] flex justify-between items-center flex-col-reverse md:flex-row'> 
         <div className='w-[100%] md:w-[33%] h-[100%] flex justify-center gap-[4%] items-center flex-row md:flex-col'>

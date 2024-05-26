@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import DetailsModel from './DetailsModel';
 
-const SupervisorsTable = ({ supervisors, type }) => {
+const SupervisorsTable = ({ type }) => {
 
   const options = [
     { value: '1', label: 'Saturday', labelAR: 'السبت' },
@@ -17,10 +18,11 @@ const SupervisorsTable = ({ supervisors, type }) => {
     work_days: []
   };
   const [selectedOptions, setSelectedOptions] = useState([]);
+  const [employees, setEmployees] = useState([])
   const [filters, setFilters] = useState(initialFilters);
   const [model, setModel] = useState(false)
   const [projectID, setProjectID] = useState(0)
-  const [filteredSupervisors, setFilteredSupervisors] = useState(supervisors);
+  const [filteredSupervisors, setFilteredSupervisors] = useState(employees);
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
@@ -51,7 +53,7 @@ const SupervisorsTable = ({ supervisors, type }) => {
   console.log('bb',filters)
 
   const applyFilters = () => {
-    const filtered = supervisors.filter(supervisor => {
+    const filtered = employees.filter(supervisor => {
       return (
         (filters.name === '' || supervisor.name.toLowerCase().includes(filters.name.toLowerCase())) &&
         (filters.specialization === '' || supervisor.specialization.toLowerCase().includes(filters.specialization.toLowerCase())) &&
@@ -64,8 +66,38 @@ const SupervisorsTable = ({ supervisors, type }) => {
 
   const clearFilters = () => {
     setFilters(initialFilters);
-    setFilteredSupervisors(supervisors);
+    setFilteredSupervisors(employees);
   };
+
+  const empListURlAPI='http://127.0.0.1:8000/admin/employee/all'
+  async function get_employee(){
+    // setLoader(false) 
+   try{
+     const response =await axios.get(empListURlAPI,{
+       headers:{
+         "Authorization":`Bearer ${localStorage.getItem('token')}`,
+         "Access-Control-Allow-Origin": "*",
+       "Content-Type": "multipart/form-data",
+
+       }
+     })
+     console.log(response.data.data)
+    //  setLoader(true)
+    setEmployees(response.data.data)
+    setFilteredSupervisors(response.data.data)
+    
+   }
+   catch(err){
+     console.log(err)
+   }
+  }
+
+  useEffect( ()=>{
+    console.log(localStorage.getItem('token'))
+    get_employee()
+  //  setAddEmployee1(false)
+   console.log(employees)
+   },[])
 
   return (
     <div className='w-[100%]'>
@@ -80,7 +112,7 @@ const SupervisorsTable = ({ supervisors, type }) => {
             <select name="work_days" value={filters.work_days} multiple className='w-[100%] h-18 outline-none rounded-lg border-2 border-[#27374d] p-2 text-black scrollbar-thin scrollbar-track-[#d4d4ef] scrollbar-thumb-[#27374d]'>
             {options.map((option) => (
               <option value={option.label} selected={selectedOptions.includes(option.label)} onClick={() => handleOptionToggle(option.label)}>{option.label}</option>
-            ))}
+            ))} 
             </select>
           </div>
           <div className='w-[100%] md:w-[33%] h-[100%] flex justify-center items-center gap-[4%] flex-col'>
@@ -88,9 +120,9 @@ const SupervisorsTable = ({ supervisors, type }) => {
             <label htmlFor='specialization' className='absolute -top-3 right-0 font-semibold'>الاختصاص</label>
             <select name="specialization" value={filters.specialization} className='w-[100%] h-10 outline-none rounded-lg border-2 border-[#27374d] p-2 text-black' onChange={handleFilterChange}>
               <option value=''></option>
-              {supervisors.map((supervisor, index) => (
+              {/* {employees.map((supervisor, index) => (
               <option value={supervisor.specialization}>{supervisor.specialization}</option>
-            ))}
+            ))} */}
             </select>
           </div>
           <div className='w-[100%] md:w-[80%] h-[48%] flex justify-center items-center flex-col relative '>
@@ -110,11 +142,11 @@ const SupervisorsTable = ({ supervisors, type }) => {
         <th className='w-[25%] bg-[#27374d] rounded-tl-xl p-2 text-lg text-white'>التفاصيل</th> 
         :''}
         </tr>
-        {filteredSupervisors.map((supervisor, index) => (
+        {filteredSupervisors.length > 0 ? filteredSupervisors.map((supervisor, index) => (
           <tr className='bg-[#d4d4ef]' key={index}>
             <td className={`${type ? 'w-[25%]' : 'w-[33%]'} h-16 text-center text-lg`}>{supervisor.name}</td>
-            <td className={`${type ? 'w-[25%]' : 'w-[33%]'} h-16 text-center text-lg`}>{supervisor.work_days.join(', ')}</td>
-            <td className={`${type ? 'w-[25%]' : 'w-[33%]'} h-16 text-center text-lg`}>{supervisor.specialization}</td>
+            <td className={`${type ? 'w-[25%]' : 'w-[33%]'} h-16 text-center text-lg`}>{supervisor.work_days}</td>
+            <td className={`${type ? 'w-[25%]' : 'w-[33%]'} h-16 text-center text-lg`}>{supervisor.specialization == null ? '' : supervisor.specialization.name}</td>
             {type ? 
           <td className='w-[25%] text-center relative'>
           <button className='w-[50%] border-2 border-[#27374d] rounded-xl p-2 text-lg font-bold text-[#27374d] hover:border-[#27374db2] hover:text-[#27374db2]' onClick={()=>{setModel(true); setProjectID(supervisor.id)}}>التفاصيل</button>
@@ -122,12 +154,9 @@ const SupervisorsTable = ({ supervisors, type }) => {
        : 
        ''}
           </tr>
-        ))}
+        )) : <p className='w-[100%] text-center text-xl text-[#27374d] -mt-5'>لا يوجد مشرفين</p>}
       </table>
       </div>
-      {filteredSupervisors.length < 1 ?
-        <p className='w-[100%] text-center text-xl text-[#27374d] -mt-5'>لا يوجد مشرفين</p>
-        : ''}
         <DetailsModel visible={model} onClose={()=>setModel(false)} id={projectID}/>
     </div>
   );

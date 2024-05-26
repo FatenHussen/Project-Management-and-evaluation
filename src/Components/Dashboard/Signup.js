@@ -25,6 +25,7 @@ const Signup = () => {
     formData.append('email', data.email);
     formData.append('password', data.password);
     formData.append('role', data.role);
+    formData.append('is_evaluator', 0);
     const SignupURlAPI='http://127.0.0.1:8000/admin/employee/create'
    async function Signup(){
     let hasError = false;

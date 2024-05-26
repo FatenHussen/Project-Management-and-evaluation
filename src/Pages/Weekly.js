@@ -7,38 +7,287 @@ const Weekly = () => {
 
     const projects = [
       {
-        date: "2024-05-22",
-        projectName: "Project Alpha",
-        attendance: ["Alice", "Bob", "Charlie", "David", "Eve"],
-        testing: "Completed",
-        code: "In Progress",
-        design: "Completed",
-        presentation: "Pending",
-        report: "Completed",
-        github: "Updated",
-        reference_study: "Reviewed",
-        analytical_study: "In Progress",
-        results: "Pending",
-        notes: "Need to finalize the code by next week.",
-        tasks: "Complete the pending presentation and results analysis."
+        "attendance": [
+          {
+            "name": "Alice Johnson",
+            "attendance": "Present",
+            "testing": "Completed",
+            "code": "Submitted",
+            "design": "In Progress",
+            "presentation": "Not Started",
+            "report": "Completed",
+            "github": "https://github.com/alicejohnson",
+            "reference_study": "Read",
+            "analytical_study": "In Progress",
+            "results": "Pending"
+          },
+          {
+            "name": "Bob Smith",
+            "attendance": "Absent",
+            "testing": "Not Completed",
+            "code": "Not Submitted",
+            "design": "Not Started",
+            "presentation": "Not Started",
+            "report": "Not Completed",
+            "github": "https://github.com/bsmith",
+            "reference_study": "Not Read",
+            "analytical_study": "Not Started",
+            "results": "Pending"
+          },
+          {
+            "name": "Charlie Davis",
+            "attendance": "Present",
+            "testing": "In Progress",
+            "code": "Submitted",
+            "design": "Completed",
+            "presentation": "In Progress",
+            "report": "In Progress",
+            "github": "https://github.com/charliedavis",
+            "reference_study": "Read",
+            "analytical_study": "Completed",
+            "results": "Drafted"
+          },
+          {
+            "name": "Diana Brown",
+            "attendance": "Present",
+            "testing": "Completed",
+            "code": "Submitted",
+            "design": "Submitted",
+            "presentation": "In Progress",
+            "report": "Completed",
+            "github": "https://github.com/dianabrown",
+            "reference_study": "Read",
+            "analytical_study": "In Progress",
+            "results": "Finalized"
+          },
+          {
+            "name": "Ethan Clark",
+            "attendance": "Absent",
+            "testing": "Not Completed",
+            "code": "Not Submitted",
+            "design": "Not Started",
+            "presentation": "Not Started",
+            "report": "Not Completed",
+            "github": "https://github.com/eclark",
+            "reference_study": "Not Read",
+            "analytical_study": "Not Started",
+            "results": "Pending"
+          }
+        ],
+        "date": "2024-05-24"
       },
       {
-        date: "2024-05-15",
-        projectName: "Project Beta",
-        attendance: ["Frank", "Grace", "Hannah"],
-        testing: "Pending",
-        code: "Completed",
-        design: "In Progress",
-        presentation: "Completed",
-        report: "In Progress",
-        github: "Pending",
-        reference_study: "Reviewed",
-        analytical_study: "Completed",
-        results: "Completed",
-        notes: "Ensure all team members are present for the next meeting.",
-        tasks: "Finish the design and update the GitHub repository."
+        "attendance": [
+          {
+            "name": "Alice Johnson",
+            "attendance": "Present",
+            "testing": "In Progress",
+            "code": "Submitted",
+            "design": "Completed",
+            "presentation": "In Progress",
+            "report": "Completed",
+            "github": "https://github.com/alicejohnson",
+            "reference_study": "Read",
+            "analytical_study": "In Progress",
+            "results": "Pending"
+          },
+          {
+            "name": "Bob Smith",
+            "attendance": "Absent",
+            "testing": "Not Completed",
+            "code": "Not Submitted",
+            "design": "Not Started",
+            "presentation": "Not Started",
+            "report": "Not Completed",
+            "github": "https://github.com/bsmith",
+            "reference_study": "Not Read",
+            "analytical_study": "Not Started",
+            "results": "Pending"
+          },
+          {
+            "name": "Charlie Davis",
+            "attendance": "Present",
+            "testing": "In Progress",
+            "code": "Submitted",
+            "design": "Completed",
+            "presentation": "In Progress",
+            "report": "In Progress",
+            "github": "https://github.com/charliedavis",
+            "reference_study": "Read",
+            "analytical_study": "Completed",
+            "results": "Drafted"
+          },
+          {
+            "name": "Diana Brown",
+            "attendance": "Present",
+            "testing": "Completed",
+            "code": "Submitted",
+            "design": "Submitted",
+            "presentation": "In Progress",
+            "report": "Completed",
+            "github": "https://github.com/dianabrown",
+            "reference_study": "Read",
+            "analytical_study": "In Progress",
+            "results": "Finalized"
+          },
+          {
+            "name": "Ethan Clark",
+            "attendance": "Absent",
+            "testing": "Not Completed",
+            "code": "Not Submitted",
+            "design": "Not Started",
+            "presentation": "Not Started",
+            "report": "Not Completed",
+            "github": "https://github.com/eclark",
+            "reference_study": "Not Read",
+            "analytical_study": "Not Started",
+            "results": "Pending"
+          }
+        ],
+        "date": "2024-05-17"
+      },
+      {
+        "attendance": [
+          {
+            "name": "Alice Johnson",
+            "attendance": "Present",
+            "testing": "Completed",
+            "code": "Submitted",
+            "design": "In Progress",
+            "presentation": "Not Started",
+            "report": "Completed",
+            "github": "https://github.com/alicejohnson",
+            "reference_study": "Read",
+            "analytical_study": "In Progress",
+            "results": "Pending"
+          },
+          {
+            "name": "Bob Smith",
+            "attendance": "Absent",
+            "testing": "Not Completed",
+            "code": "Not Submitted",
+            "design": "Not Started",
+            "presentation": "Not Started",
+            "report": "Not Completed",
+            "github": "https://github.com/bsmith",
+            "reference_study": "Not Read",
+            "analytical_study": "Not Started",
+            "results": "Pending"
+          },
+          {
+            "name": "Charlie Davis",
+            "attendance": "Present",
+            "testing": "In Progress",
+            "code": "Submitted",
+            "design": "Completed",
+            "presentation": "In Progress",
+            "report": "In Progress",
+            "github": "https://github.com/charliedavis",
+            "reference_study": "Read",
+            "analytical_study": "Completed",
+            "results": "Drafted"
+          },
+          {
+            "name": "Diana Brown",
+            "attendance": "Present",
+            "testing": "Completed",
+            "code": "Submitted",
+            "design": "Submitted",
+            "presentation": "In Progress",
+            "report": "Completed",
+            "github": "https://github.com/dianabrown",
+            "reference_study": "Read",
+            "analytical_study": "In Progress",
+            "results": "Finalized"
+          },
+          {
+            "name": "Ethan Clark",
+            "attendance": "Absent",
+            "testing": "Not Completed",
+            "code": "Not Submitted",
+            "design": "Not Started",
+            "presentation": "Not Started",
+            "report": "Not Completed",
+            "github": "https://github.com/eclark",
+            "reference_study": "Not Read",
+            "analytical_study": "Not Started",
+            "results": "Pending"
+          }
+        ],
+        "date": "2024-05-10"
+      },
+      {
+        "attendance": [
+          {
+            "name": "Alice Johnson",
+            "attendance": "Present",
+            "testing": "Completed",
+            "code": "Submitted",
+            "design": "In Progress",
+            "presentation": "Not Started",
+            "report": "Completed",
+            "github": "https://github.com/alicejohnson",
+            "reference_study": "Read",
+            "analytical_study": "In Progress",
+            "results": "Pending"
+          },
+          {
+            "name": "Bob Smith",
+            "attendance": "Absent",
+            "testing": "Not Completed",
+            "code": "Not Submitted",
+            "design": "Not Started",
+            "presentation": "Not Started",
+            "report": "Not Completed",
+            "github": "https://github.com/bsmith",
+            "reference_study": "Not Read",
+            "analytical_study": "Not Started",
+            "results": "Pending"
+          },
+          {
+            "name": "Charlie Davis",
+            "attendance": "Present",
+            "testing": "In Progress",
+            "code": "Submitted",
+            "design": "Completed",
+            "presentation": "In Progress",
+            "report": "In Progress",
+            "github": "https://github.com/charliedavis",
+            "reference_study": "Read",
+            "analytical_study": "Completed",
+            "results": "Drafted"
+          },
+          {
+            "name": "Diana Brown",
+            "attendance": "Present",
+            "testing": "Completed",
+            "code": "Submitted",
+            "design": "Submitted",
+            "presentation": "In Progress",
+            "report": "Completed",
+            "github": "https://github.com/dianabrown",
+            "reference_study": "Read",
+            "analytical_study": "In Progress",
+            "results": "Finalized"
+          },
+          {
+            "name": "Ethan Clark",
+            "attendance": "Absent",
+            "testing": "Not Completed",
+            "code": "Not Submitted",
+            "design": "Not Started",
+            "presentation": "Not Started",
+            "report": "Not Completed",
+            "github": "https://github.com/eclark",
+            "reference_study": "Not Read",
+            "analytical_study": "Not Started",
+            "results": "Pending"
+          }
+        ],
+        "date": "2024-05-03"
       }
-    ]    
+    ];
+    
     const [filteredProjects, setFilteredProjects] = useState([])
     const [date, setDate] = useState()
 
@@ -59,6 +308,7 @@ const Weekly = () => {
       <div className='w-[98%] bg-[#9fb0c9] border-2 border-b-0 border-[#27374d] text-[#27374d] mt-16 flex justify-center items-center'>
             <div className='w-[20%] h-[100%] p-2 border-l-2 border-[#27374d] text-[#27374d] flex justify-center items-center'>
                 <select className='bg-transparent outline-none w-[75%]' onChange={(e)=>filterDataByDate(e)}>
+                  <option></option>
                 {projects.map((project, index) => ( 
                     <option value={project.date}>{project.date}</option>
                   ))}

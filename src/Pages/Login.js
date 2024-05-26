@@ -15,7 +15,7 @@ const Login = () => {
     formData.append('email', email);
     formData.append('password', password);
     
-    const LoginURlAPI='https://aspu.octopus-s-s.serv00.net/api/login'
+    const LoginURlAPI='http://localhost:8000/api/login'
    async function LoginAPIA(){
     let hasError = false;
 
@@ -41,7 +41,8 @@ const Login = () => {
 
   if (hasError) {
     return; // Return early if there are validation errors
-}
+  }
+  console.log('ppp')
     setLoader(true)
         try{
           const response=await axios.post(LoginURlAPI, formData, {

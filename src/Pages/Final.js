@@ -72,14 +72,14 @@ const Middle = () => {
     fetchMidEvaluations();
   }, [id]);
 
-  console.log('dataaa', project)
+  console.log('dataaa', evaluations)
   return (
     <div className='w-[100%] min-h-screen h-fit bg-slate-200'>
       <div className='w-[100%] h-16'>
         <Navbar />
       </div>
       <div className='w-[100%] h-fit flex justify-center items-center flex-col' dir="rtl">
-        <p className='w-[90%] text-3xl font-bold text-[#27374d] my-5'>الدراسة المرحلية</p>
+        <p className='w-[90%] text-3xl font-bold text-[#27374d] my-5'>الدراسة النهائية</p>
         <div className='w-[90%] bg-[#9fb0c9] border-2 border-b-0 border-[#27374d] text-[#27374d] mt-16 flex justify-center items-center'>
           <p className="w-[25.05%] h-[100%] border-l-2 border-[#27374d] text-[#27374d] p-2">اسم المشروع</p>
           <div className='w-[74.95%]'>
@@ -140,7 +140,7 @@ const Middle = () => {
             })}
             <tr className='border-b-2 border-[#27374d]'>
               <td className='w-[25%] h-14 text-center border-l-2 border-[#27374d]'>التقييم نهائي</td>
-              <td className='h-14 text-center font-bold'></td>
+              <td className='h-14 text-center font-bold'>{projectEvaluation ? projectEvaluation.final_result : ''}</td>
               <td className='h-14 text-center font-bold'></td>
               <td className='h-14 text-center font-bold'></td>
             </tr>

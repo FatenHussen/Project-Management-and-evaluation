@@ -140,7 +140,7 @@ const Middle = () => {
             })}
             <tr className='border-b-2 border-[#27374d]'>
               <td className='w-[25%] h-14 text-center border-l-2 border-[#27374d]'>التقييم نهائي</td>
-              <td className='h-14 text-center font-bold'></td>
+              <td className='h-14 text-center font-bold'>{projectEvaluation ? projectEvaluation.final_result : ''}</td>
               <td className='h-14 text-center font-bold'></td>
               <td className='h-14 text-center font-bold'></td>
             </tr>

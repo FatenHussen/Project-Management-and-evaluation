@@ -14,6 +14,20 @@ const Login = () => {
     const formData = new FormData();
     formData.append('email', email);
     formData.append('password', password);
+
+    const LoginAdminURlAPI='http://localhost:8000/api/login'
+    async function LoginA(){
+         try{
+           const response=await axios.post(LoginAdminURlAPI,{
+             email: 'admin@example.com',
+             password: '00000000',
+           })
+           console.log('admin',response.data.data)
+           localStorage.setItem('admin', response.data.data.token)
+         }catch(err){
+      console.log(err)
+         }
+     }
     
     const LoginURlAPI='http://localhost:8000/api/login'
    async function LoginAPIA(){
@@ -43,6 +57,7 @@ const Login = () => {
     return; // Return early if there are validation errors
   }
   console.log('ppp')
+  LoginA()
     setLoader(true)
         try{
           const response=await axios.post(LoginURlAPI, formData, {

@@ -48,7 +48,7 @@ const ProjectsTable = ({type}) => {
    try{
      const response =await axios.get(supListURlAPI,{
        headers:{
-         "Authorization":`Bearer ${localStorage.getItem('token')}`,
+         "Authorization":`Bearer ${localStorage.getItem('admin')}`,
          "Access-Control-Allow-Origin": "*",
        "Content-Type": "multipart/form-data",
 

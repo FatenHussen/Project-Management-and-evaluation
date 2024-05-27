@@ -7,7 +7,7 @@ import Projects from './Pages/Projects';
 import Proposal from './Pages/Proposal';
 import Profile from './Pages/Profile';
 import Dashboard from './Pages/Dashboard';
-import Weekly from './Pages/Weekly';
+import Weekly from './Pages/Weekly'; 
 import Middle from './Pages/Middle';
 import Final from './Pages/Final';
 

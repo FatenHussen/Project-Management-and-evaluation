@@ -16,14 +16,14 @@ const Profile = () => {
         password: ''
     }) 
 
-    // const [profile, setProfile] = useState([])
-    const profile = {
-      name: 'John Doe',
-      specialization: 'Software Engineering',
-      days: ['Monday', 'Wednesday', 'Friday'],
-      gender: 'Male',
-      projects: 2
-  };
+    const [profile, setProfile] = useState([])
+  //   const profile = {
+  //     name: 'John Doe',
+  //     specialization: 'Software Engineering',
+  //     days: ['Monday', 'Wednesday', 'Friday'],
+  //     gender: 'Male',
+  //     projects: 2
+  // };
 
   const [errors, setErrors] = useState({
     name: '',
@@ -42,22 +42,22 @@ const Profile = () => {
     { value: '5', label: 'Friday', labelAR: 'الجمعة' }
   ];
 
-  const SignupURlAPI='http://localhost:8000/api/login'
+  const SignupURlAPI='http://localhost:8000/employee/update_profile'
    async function EditProfile(){
     let hasError = false;
 
-    if (!data.name.trim()) {
-      setErrors(error => ({
-        ...error,
-        name: 'Please enter your name.'
-      }));
-      hasError = true;
-  } else {
-  setErrors(error => ({
-    ...error,
-    name: ''
-  }));
-  }
+  //   if (!data.name.trim()) {
+  //     setErrors(error => ({
+  //       ...error,
+  //       name: 'Please enter your name.'
+  //     }));
+  //     hasError = true;
+  // } else {
+  // setErrors(error => ({
+  //   ...error,
+  //   name: ''
+  // }));
+  // }
 
     if (!data.specialization.trim()) {
       setErrors(error => ({
@@ -137,14 +137,23 @@ projects: ''
     setLoader(true)
         try{
           const response=await axios.post(SignupURlAPI,{
-            name : data.name,
-            email: data.email,
-            password: data.password,
-            role : data.role
+            name: data.name,
+            specialization_id : data.specialization,
+            work_days: data.days,
+    gender: data.gender,
+    projects_count: data.projects,
+    password: data.password
+          },{
+            headers:{
+              "Authorization":`Bearer ${localStorage.getItem('token')}`,
+              "Access-Control-Allow-Origin": "*",
+            "Content-Type": "multipart/form-data",
+     
+            }
           })
-          console.log('ss',response.data.user)
-          localStorage.setItem('token', response.data.authorisation.token)
-          localStorage.setItem('id', response.data.user.id)
+          console.log('ss',response)
+          // localStorage.setItem('token', response.data.authorisation.token)
+          // localStorage.setItem('id', response.data.user.id)
            setLoader(false)
           setEdit(false)
         }catch(err){
@@ -153,7 +162,7 @@ projects: ''
         }
     }
 
-    const empListURlAPI='http://127.0.0.1:8000/admin/get_profile'
+    const empListURlAPI='http://127.0.0.1:8000/employee/get_profile'
   async function get_profile(){
     // setLoader(false) 
    try{
@@ -165,9 +174,12 @@ projects: ''
 
        }
      })
-     // console.log(response.data)
+     console.log(response.data.employee)
     //  setLoader(true)
-    //  setProfile(response.data.data)
+     setProfile(response.data.data.employee)
+     if(response.data.data.employee.gender == null){
+      setEdit(true)
+     }
     
    }
    catch(err){
@@ -222,7 +234,7 @@ projects: ''
     password: ''
 })
   }
-  console.log('fff', errors)
+  console.log('fff', data)
 
   return (
     <div className='w-[100%] min-h-screen h-fit bg-slate-200'>
@@ -247,7 +259,7 @@ projects: ''
             <div className='w-[70%]'>
                     <label className={`font-semibold text-base sm:text-xl mt-5 ${errors.name ? 'text-red-600' : 'text-[#27374d]'}`}>الاسم</label>
                 </div>
-                <input type='text' value={ edit ? data.name : profile.name} className={`w-[70%] h-14 outline-none bg-transparent border-2 ${errors.name ? 'border-red-600' : 'border-[#27374d]'} rounded-lg p-2`} disabled={!edit} onChange={(e)=>setData({...data, name : e.target.value})}/>
+                <input type='text' value={profile.name} className={`w-[70%] h-14 outline-none bg-transparent border-2 ${errors.name ? 'border-red-600' : 'border-[#27374d]'} rounded-lg p-2`} disabled onChange={(e)=>setData({...data, name : e.target.value})}/>
                 {errors.password && <p className="text-red-500 text-sm">{errors.name}</p>}
             </div>
                 <div className='w-[100%] flex justify-center items-center flex-col gap-2'>
@@ -268,8 +280,13 @@ projects: ''
                     <label className={`font-semibold text-base sm:text-xl mt-5 ${errors.specialization ? 'text-red-600' : 'text-[#27374d]'}`}>الاختصاص</label>
                 </div>
                 {/* <input type='text' value={ edit ? data.specialization : profile.specialization} className={`w-[70%] h-14 outline-none bg-transparent border-2 ${errors.specialization ? 'border-red-600' : 'border-[#27374d]'} rounded-lg p-2`} disabled={!edit} onChange={(e)=>setData({...data, specialization : e.target.value})}/> */}
-                <select value={ edit ? data.specialization : profile.specialization} className={`w-[70%] h-14 outline-none bg-transparent border-2 ${errors.specialization ? 'border-red-600' : 'border-[#27374d]'} rounded-lg p-2`} disabled={!edit}> 
-              <option value={1} onClick={(e)=>setData({...data, specialization : e.target.value})}>1</option>
+                <select value={ edit ? data.specialization : profile.specialization_id} className={`w-[70%] h-14 outline-none bg-transparent border-2 ${errors.specialization ? 'border-red-600' : 'border-[#27374d]'} rounded-lg p-2`} disabled={!edit} onChange={(e)=>setData({...data, specialization : e.target.value})}> 
+              {/* <option value={1} onClick={(e)=>setData({...data, specialization : e.target.value})}>1</option> */}
+              <option value=''></option>
+                      <option value={4}>لا يوجد أختصاص</option> 
+                      <option value={2}>هندسة برمجيات</option>
+                      <option value={3}>ذكاء صنعي</option>
+                      <option value={1}>شبكات</option>
             </select>
                 {errors.specialization && <p className="text-red-500 text-sm">{errors.specialization}</p>}
             </div>
@@ -277,8 +294,11 @@ projects: ''
             <div className='w-[70%]'>
                     <label className={`font-semibold text-base sm:text-xl mt-5 ${errors.gender ? 'text-red-600' : 'text-[#27374d]'}`}>الجنس</label>
                 </div>
-                <select value={ edit ? data.gender : profile.gender} className={`w-[70%] h-14 outline-none bg-transparent border-2 ${errors.gender ? 'border-red-600' : 'border-[#27374d]'} rounded-lg p-2`} disabled={!edit}> 
-              <option value={1} onClick={(e)=>setData({...data, gender : e.target.value})}>1</option>
+                <select value={ edit ? data.gender : profile.gender} className={`w-[70%] h-14 outline-none bg-transparent border-2 ${errors.gender ? 'border-red-600' : 'border-[#27374d]'} rounded-lg p-2`} disabled={!edit} onChange={(e)=>setData({...data, gender : e.target.value})}>
+              {/* <option value={1} onClick={(e)=>setData({...data, gender : e.target.value})}>1</option> */}
+              <option value=''></option>
+                   <option value='male'>ذكر</option>
+                   <option value='female'>أنثى</option>
             </select>
                 {/* <input type='text' value={ edit ? data.gender : profile.gender} className={`w-[70%] h-14 outline-none bg-transparent border-2 ${errors.gender ? 'border-red-600' : 'border-[#27374d]'} rounded-lg p-2`}  disabled={!edit} onChange={(e)=>setData({...data, gender : e.target.value})}/> */}
                 {errors.gender && <p className="text-red-500 text-sm">{errors.gender}</p>}
@@ -287,7 +307,7 @@ projects: ''
             <div className='w-[70%]'>
                     <label className={`font-semibold text-base sm:text-xl mt-5 ${errors.days ? 'text-red-600' : 'text-[#27374d]'}`}>الأيام المختارة</label>
                 </div>
-                <select name="days" value={ edit ? data.days : profile.days} multiple className={`w-[70%] h-18 outline-none rounded-lg border-2 ${errors.days ? 'border-red-600' : 'border-[#27374d]'} p-2 scrollbar-thin scrollbar-track-[#d4d4ef] scrollbar-thumb-[#27374d]`} disabled={!edit}>
+                <select name="days" value={ edit ? data.days : profile.work_days} multiple className={`w-[70%] h-18 outline-none rounded-lg border-2 ${errors.days ? 'border-red-600' : 'border-[#27374d]'} p-2 scrollbar-thin scrollbar-track-[#d4d4ef] scrollbar-thumb-[#27374d]`} disabled={!edit}>
             {options.map((option) => (
               <option value={option.label} selected={selectedOptions.includes(option.label)} onClick={() => handleOptionToggle(option.label)}>{option.label}</option>
             ))}
@@ -299,7 +319,7 @@ projects: ''
             <div className='w-[70%]'>
                     <label className={`font-semibold text-base sm:text-xl mt-5 ${errors.projects ? 'text-red-600' : 'text-[#27374d]'}`}>عدد المشاريع</label>
                 </div>
-                <input type='text' value={ edit ? data.projects : profile.projects} className={`w-[70%] h-14 outline-none bg-transparent border-2 ${errors.projects ? 'border-red-600' : 'border-[#27374d]'} rounded-lg p-2`} disabled={!edit} onChange={(e)=>setData({...data, projects : e.target.value})}/>
+                <input type='text' value={ edit ? data.projects : profile.projects_count} className={`w-[70%] h-14 outline-none bg-transparent border-2 ${errors.projects ? 'border-red-600' : 'border-[#27374d]'} rounded-lg p-2`} disabled={!edit} onChange={(e)=>setData({...data, projects : e.target.value})}/>
                 {errors.projects && <p className="text-red-500 text-sm">{errors.projects}</p>}
             </div>
         </div>

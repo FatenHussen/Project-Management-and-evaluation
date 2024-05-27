@@ -1,10 +1,62 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import axios from 'axios';
 import { useParams, Link } from 'react-router-dom';
 import Navbar from '../Components/Navbar';
 import test from '../Assets/OIP (2).jpg' 
 
 const Proposal = () => {
   const { id } = useParams();
+  const [proposal, setProposal] = useState('')
+  const [project, setProject] = useState('')
+
+  const empListURlAPI=`http://127.0.0.1:8000/employee/get_project_proposal/${id}`
+  async function get_employee(){
+    // setLoader(false) 
+   try{
+     const response =await axios.get(empListURlAPI,{
+       headers:{
+         "Authorization":`Bearer ${localStorage.getItem('token')}`,
+         "Access-Control-Allow-Origin": "*",
+       "Content-Type": "multipart/form-data",
+
+       }
+     })
+     console.log(response.data.data)
+     setProposal(response.data.data)
+   }
+   catch(err){
+     console.log(err)
+   }
+  }
+
+  const proListURlAPI=`http://127.0.0.1:8000/employee/get_info_project/${id}`
+  async function get_project(){
+    // setLoader(false) 
+   try{
+     const response =await axios.get(proListURlAPI,{
+       headers:{
+         "Authorization":`Bearer ${localStorage.getItem('token')}`,
+         "Access-Control-Allow-Origin": "*",
+       "Content-Type": "multipart/form-data",
+
+       }
+     })
+     console.log(response.data.data)
+     setProject(response.data.data)
+   }
+   catch(err){
+     console.log(err)
+   }
+  }
+
+  useEffect( ()=>{
+    console.log(localStorage.getItem('token'))
+    get_employee()
+    get_project()
+  //  setAddEmployee1(false)
+  //  console.log(students)
+   },[])
+
 
   console.log('id', id)
 
@@ -30,6 +82,7 @@ const Proposal = () => {
                   type="text"
 className='w-[100%] h-10 outline-none bg-transparent' 
                   name="projectName"   
+                  value={project.name}
                   disabled
                 />
               </th>
@@ -42,6 +95,7 @@ className='w-[100%] h-10 outline-none bg-transparent'
               <textarea
                  disabled
                   rows="10"
+                  value={proposal.problem}
                   className='w-[100%] resize-none bg-transparent p-2 outline-none'
                   name="problem"
                 />
@@ -52,6 +106,7 @@ className='w-[100%] h-10 outline-none bg-transparent'
               <td className="w-[80%]">
                 <input disabled
                   type="text"
+                  value={proposal.domain}
 className='w-[100%] h-10 outline-none bg-transparent' 
                   name="domain"
   
@@ -64,6 +119,7 @@ className='w-[100%] h-10 outline-none bg-transparent'
               <textarea
                  disabled
                   rows="10"
+                  value={proposal.literature_references}
                   className='w-[100%] resize-none bg-transparent p-2 outline-none'
                   name="literature"
   
@@ -132,7 +188,7 @@ className='w-[100%] h-10 outline-none bg-transparent'
                   <div className="flex justify-center items-center">
                     <Link to={``}>
                       <img
-                        src={test}
+                        src={proposal.main_map}
                       />
                     </Link>
                   </div>
@@ -149,6 +205,7 @@ className='w-[100%] h-10 outline-none bg-transparent'
                   type="text"
 className='w-[100%] h-10 outline-none bg-transparent' 
                   name="experts"
+                  value={proposal.experts}
   
                 />
               </td>
@@ -160,6 +217,7 @@ className='w-[100%] h-10 outline-none bg-transparent'
                   type="text"
 className='w-[100%] h-10 outline-none bg-transparent' 
                   name="users"
+                  value={proposal.users}
   
                 />
               </td>
@@ -171,6 +229,7 @@ className='w-[100%] h-10 outline-none bg-transparent'
                   type="text"
 className='w-[100%] h-10 outline-none bg-transparent' 
                   name="stakeholders"
+                  value={proposal.stakeholders}
   
                 />
               </td>
@@ -183,6 +242,7 @@ className='w-[100%] h-10 outline-none bg-transparent'
                   rows="10"
                   className='w-[100%] resize-none bg-transparent p-2 outline-none'
                   name="literatureS"
+                  value={proposal.solution_literature_references}
   
                 />
               </td>
@@ -239,7 +299,7 @@ className='w-[100%] h-10 outline-none bg-transparent'
                 <div className="flex justify-center items-center">
                     <Link to={``}>
                       <img
-                        src={test}
+                        src={proposal.mind_map}
                       />
                     </Link>
                   </div>
@@ -287,6 +347,7 @@ className='w-[100%] h-10 outline-none bg-transparent'
                   rows="10"
                   className='w-[100%] resize-none bg-transparent p-2 outline-none'
                   name="pro_solution"
+                  value={proposal.proposed_solution}
   
                 />
               </td>
@@ -299,7 +360,7 @@ className='w-[100%] h-10 outline-none bg-transparent'
                   rows="10"
                   className='w-[100%] resize-none bg-transparent p-2 outline-none'
                   name="fun_requirements"
-  
+                  value={proposal.functional_requirements}
                 />
               </td>
             </tr>
@@ -311,6 +372,7 @@ className='w-[100%] h-10 outline-none bg-transparent'
                   rows="10"
                   className='w-[100%] resize-none bg-transparent p-2 outline-none'
                   name="fun_Nrequirements"
+                  value={proposal.non_functional_requirements}
   
                 />
               </td>
@@ -322,6 +384,7 @@ className='w-[100%] h-10 outline-none bg-transparent'
                   type="text"
 className='w-[100%] h-10 outline-none bg-transparent' 
                   name="methodology"
+                  value={proposal.methodology}
   
                 />
               </td>
@@ -333,6 +396,7 @@ className='w-[100%] h-10 outline-none bg-transparent'
                   type="text"
 className='w-[100%] h-10 outline-none bg-transparent' 
                   name="meetings"
+                  value={proposal.meetings}
   
                 />
               </td>
@@ -344,6 +408,7 @@ className='w-[100%] h-10 outline-none bg-transparent'
                   type="text"
 className='w-[100%] h-10 outline-none bg-transparent' 
                   name="communication"
+                  value={proposal.communication}
   
                 />
               </td>
@@ -355,6 +420,7 @@ className='w-[100%] h-10 outline-none bg-transparent'
                   type="text"
 className='w-[100%] h-10 outline-none bg-transparent' 
                   name="projectLeader"
+                  value={proposal.project_leader}
   
                 />
               </td>
@@ -366,6 +432,7 @@ className='w-[100%] h-10 outline-none bg-transparent'
                   type="text"
 className='w-[100%] h-10 outline-none bg-transparent' 
                   name="fileSharing"
+                  value={proposal.file_sharing}
   
                 />
               </td>
@@ -377,6 +444,7 @@ className='w-[100%] h-10 outline-none bg-transparent'
                   type="text"
 className='w-[100%] h-10 outline-none bg-transparent' 
                   name="platform"
+                  value={proposal.platform}
    
   
                 />
@@ -389,6 +457,7 @@ className='w-[100%] h-10 outline-none bg-transparent'
                   type="text"
 className='w-[100%] h-10 outline-none bg-transparent' 
                   name="tools"
+                  value={proposal.tools}
   
                 />
               </td>
@@ -400,6 +469,7 @@ className='w-[100%] h-10 outline-none bg-transparent'
                   type="text"
 className='w-[100%] h-10 outline-none bg-transparent' 
                   name="languages"
+                  value={proposal.languages}
   
                 />
               </td>
@@ -411,6 +481,7 @@ className='w-[100%] h-10 outline-none bg-transparent'
                   type="text"
 className='w-[100%] h-10 outline-none bg-transparent' 
                   name="database"
+                  value={proposal.database}
   
                 />
               </td>
@@ -422,6 +493,7 @@ className='w-[100%] h-10 outline-none bg-transparent'
                   type="text"
 className='w-[100%] h-10 outline-none bg-transparent' 
                   name="packages"
+                  value={proposal.packages}
   
                 />
               </td>
@@ -430,23 +502,31 @@ className='w-[100%] h-10 outline-none bg-transparent'
                 <th className='w-[20%] h-10 border-l-2 border-[#27374d] text-[#27374d]'>أسماء المشرفين</th>
                 <th className='w-[80%] h-10 border-l-2 border-[#27374d] text-[#27374d]'>الاختصاص</th>
             </tr>
+             {(project && project.employees.length > 0)? project.employees.map((supervisor, index) => (
             <tr className='border-b-2 border-[#27374d] bg-gray-200'>
+                <td className='w-[20%] h-10 border-l-2 border-[#27374d] text-[#27374d]'>{supervisor.name}</td>
+                <td className='w-[80%] h-10 border-l-2 border-[#27374d] text-[#27374d]'>{supervisor.specialization_id == 1 ? 'شبكات حاسوبية' : supervisor.specialization_id == 2 ? 'هندسة البرمجيات' : supervisor.specialization_id == 3 ? 'الذكاء الصنعي' : ''}</td>
+            </tr>
+            )) : ''}
+            {/* <tr className='border-b-2 border-[#27374d] bg-gray-200'>
                 <td className='w-[20%] h-10 border-l-2 border-[#27374d] text-[#27374d]'></td>
                 <td className='w-[80%] h-10 border-l-2 border-[#27374d] text-[#27374d]'></td>
             </tr>
             <tr className='border-b-2 border-[#27374d] bg-gray-200'>
                 <td className='w-[20%] h-10 border-l-2 border-[#27374d] text-[#27374d]'></td>
                 <td className='w-[80%] h-10 border-l-2 border-[#27374d] text-[#27374d]'></td>
-            </tr>
-            <tr className='border-b-2 border-[#27374d] bg-gray-200'>
-                <td className='w-[20%] h-10 border-l-2 border-[#27374d] text-[#27374d]'></td>
-                <td className='w-[80%] h-10 border-l-2 border-[#27374d] text-[#27374d]'></td>
-            </tr>
+            </tr> */}
             <tr className='border-b-2 border-[#27374d] bg-gray-300'>
                 <th className='w-[20%] h-10 border-l-2 border-[#27374d] text-[#27374d]'>أسماء الطلاب</th>
                 <th className='w-[80%] h-10 border-l-2 border-[#27374d] text-[#27374d]'>دور الطالب في المشروع</th>
             </tr>
+            {(project && project.user.length > 0) ? project.user.map((students, index) => (
             <tr className='border-b-2 border-[#27374d] bg-gray-200'>
+                <td className='w-[20%] h-10 border-l-2 border-[#27374d] text-[#27374d]'>{students.name}</td>
+                <td className='w-[80%] h-10 border-l-2 border-[#27374d] text-[#27374d]'>{students.role_for_project}</td>
+            </tr>
+             )) : ''}
+            {/* <tr className='border-b-2 border-[#27374d] bg-gray-200'>
                 <td className='w-[20%] h-10 border-l-2 border-[#27374d] text-[#27374d]'></td>
                 <td className='w-[80%] h-10 border-l-2 border-[#27374d] text-[#27374d]'></td>
             </tr>
@@ -461,11 +541,7 @@ className='w-[100%] h-10 outline-none bg-transparent'
             <tr className='border-b-2 border-[#27374d] bg-gray-200'>
                 <td className='w-[20%] h-10 border-l-2 border-[#27374d] text-[#27374d]'></td>
                 <td className='w-[80%] h-10 border-l-2 border-[#27374d] text-[#27374d]'></td>
-            </tr>
-            <tr className='border-b-2 border-[#27374d] bg-gray-200'>
-                <td className='w-[20%] h-10 border-l-2 border-[#27374d] text-[#27374d]'></td>
-                <td className='w-[80%] h-10 border-l-2 border-[#27374d] text-[#27374d]'></td>
-            </tr>
+            </tr> */}
           </tbody>
         </table>
         {/* <div className='w-[90%] my-10 flex justify-start items-center'>

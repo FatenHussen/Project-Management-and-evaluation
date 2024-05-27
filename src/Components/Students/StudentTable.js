@@ -90,7 +90,7 @@ const StudentTable = ({students, setFilteredStudents, data, student_num}) => {
           <th className='w-[25%] bg-[#27374d] p-2 text-lg text-white'>السنة</th>
           <th className='w-[25%] bg-[#27374d] p-2 text-lg text-white'>الساعات</th>
           <th className='w-[25%] bg-[#27374d] rounded-tl-xl p-2 text-lg text-white'>الفصل المشروع</th>
-        </tr>
+        </tr> 
        {students.length > 0 ? students.map((student, index) => (
           <tr className='bg-[#d4d4ef]' key={index}>
           <td className='w-[25%] h-16 text-center text-lg'>{student.name}</td>

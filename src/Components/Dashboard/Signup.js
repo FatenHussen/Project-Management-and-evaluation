@@ -11,13 +11,15 @@ const Signup = () => {
         name : '',
         email: '',
         password: '',
-        role : '' 
+        role : '' ,
+        is_evaluator:''
     });
     const [errors, setErrors] = useState({
       name: '',
       email: '',
       password: '',
       role: '',
+      is_evaluator:''
     })
     const nav = useNavigate()
     const formData = new FormData();
@@ -25,7 +27,7 @@ const Signup = () => {
     formData.append('email', data.email);
     formData.append('password', data.password);
     formData.append('role', data.role);
-    formData.append('is_evaluator', 0);
+    formData.append('is_evaluator', data.is_evaluator);
     const SignupURlAPI='http://127.0.0.1:8000/admin/employee/create'
    async function Signup(){
     let hasError = false;
@@ -167,6 +169,13 @@ setErrors(error => ({
             <option>نائب العميد</option>
             <option>نائب العميد</option>
 
+          </select>
+          {errors.role && <p className="text-red-500 text-sm">{errors.role}</p>}
+          <label htmlFor="role" className={`font-semibold text-base sm:text-xl mt-5 ${errors.is_evaluator ? 'text-red-600' : 'text-[#86b7fe]'}`}>اللجنة</label>
+          <select id='role' className={`w-[100%] h-10 rounded-3xl p-2 outline-none border ${errors.is_evaluator ? 'border-red-600' : 'border-[#86b7fe]'} bg-white`} onChange={(e)=>setData({...data, is_evaluator : e.target.value})}>
+            <option value=''></option>
+            <option value={1}>عضو لجنة</option>
+            <option value={0}>غير مشترك</option>
           </select>
           {errors.role && <p className="text-red-500 text-sm">{errors.role}</p>}
             </div>

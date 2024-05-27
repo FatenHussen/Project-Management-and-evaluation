@@ -114,11 +114,13 @@ const Supervisors = () => {
       </div>
       <div className='w-[100%] h-fit flex justify-center items-center flex-col gap-5'>
         <div className='w-[90%] h-12 flex justify-center items-center gap-4 text-[#27374d]'>
-          <p className={`text-lg font-semibold py-1 px-2 cursor-pointer ${view ? 'border-b-2 border-[#27374d]' : ''}`} onClick={()=>setView(true)}>المشاريع</p>
-          <p className={`text-lg font-semibold py-1 px-2 cursor-pointer ${!view ? 'border-b-2 border-[#27374d]' : ''}`} onClick={()=>setView(false)}>المشرفين</p>
+            {/* <p className={`text-lg font-semibold py-1 px-2 cursor-pointer ${view ? 'border-b-2 border-[#27374d]' : ''}`} onClick={()=>setView(true)}>المشاريع</p>
+            <p className={`text-lg font-semibold py-1 px-2 cursor-pointer ${!view ? 'border-b-2 border-[#27374d]' : ''}`} onClick={()=>setView(false)}>المشرفين</p> */}
         </div>
         <div className='w-[90%] h-fit'>
-          {!view ? <SupervisorsTable supervisors={supervisors}/> : <SupervisorsProjects projects={superProjects}/>}
+          {!view ? <SupervisorsTable supervisors={supervisors}/> : '' 
+          // <SupervisorsProjects projects={superProjects}/>
+          }
         </div>
       </div>
     </div>

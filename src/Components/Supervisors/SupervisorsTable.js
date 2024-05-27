@@ -117,7 +117,7 @@ const SupervisorsTable = ({ type }) => {
             <label htmlFor='work_days' className='absolute -top-3 right-0 font-semibold'>أيام العمل</label>
             <select name="work_days" value={filters.work_days} multiple className='w-[100%] h-18 outline-none rounded-lg border-2 border-[#27374d] p-2 text-black scrollbar-thin scrollbar-track-[#d4d4ef] scrollbar-thumb-[#27374d]'>
             {options.map((option) => (
-              <option value={option.label} selected={selectedOptions.includes(option.label)} onClick={() => handleOptionToggle(option.label)}>{option.label}</option>
+              <option value={option.label} selected={selectedOptions.includes(option.label)} onClick={() => handleOptionToggle(option.label)}>{option.labelAR}</option>
             ))} 
             </select>
           </div>
@@ -144,21 +144,21 @@ const SupervisorsTable = ({ type }) => {
           <th className={`${type ? 'w-[25%]' : 'w-[33%]'} bg-[#27374d] rounded-tr-xl p-2 text-lg text-white`}>الاسم</th>
           <th className={`${type ? 'w-[25%]' : 'w-[33%]'} bg-[#27374d]  p-2 text-lg text-white`}>أيام العمل</th>
            <th className={`${type ? 'w-[25%]' : 'w-[33%] rounded-tl-xl'} bg-[#27374d]  p-2 text-lg text-white`}>الاختصاص</th>
-           {type ?     
+           {/* {type ?     
         <th className='w-[25%] bg-[#27374d] rounded-tl-xl p-2 text-lg text-white'>التفاصيل</th> 
-        :''}
+        :''} */}
         </tr>
         {filteredSupervisors.length > 0 ? filteredSupervisors.map((supervisor, index) => (
           <tr className='bg-[#d4d4ef]' key={index}>
             <td className={`${type ? 'w-[25%]' : 'w-[33%]'} h-16 text-center text-lg`}>{supervisor.name}</td>
             <td className={`${type ? 'w-[25%]' : 'w-[33%]'} h-16 text-center text-lg`}>{supervisor.work_days}</td>
             <td className={`${type ? 'w-[25%]' : 'w-[33%]'} h-16 text-center text-lg`}>{supervisor.specialization == null ? '' : supervisor.specialization.name}</td>
-            {type ? 
+            {/* {type ? 
           <td className='w-[25%] text-center relative'>
           <button className='w-[50%] border-2 border-[#27374d] rounded-xl p-2 text-lg font-bold text-[#27374d] hover:border-[#27374db2] hover:text-[#27374db2]' onClick={()=>{setModel(true); setProjectID(supervisor.id)}}>التفاصيل</button>
       </td>
        : 
-       ''}
+       ''} */}
           </tr>
         )) : <p className='w-[100%] text-center text-xl text-[#27374d] -mt-5'>لا يوجد مشرفين</p>}
       </table>
